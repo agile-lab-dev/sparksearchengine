@@ -1,0 +1,3 @@
+This is the documentation for Spark Search.
+
+The core functionality is provided by the classes in package [[it.agilelab.bigdata.spark.search]].

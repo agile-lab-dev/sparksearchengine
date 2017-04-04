@@ -1,0 +1,6 @@
+*~
+/bin/
+/target/
+/project/target/
+/project/project/target/
+/.idea/
