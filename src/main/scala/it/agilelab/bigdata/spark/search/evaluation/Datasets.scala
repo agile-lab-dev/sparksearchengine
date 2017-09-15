@@ -1,6 +1,7 @@
 package it.agilelab.bigdata.spark.search.evaluation
 
-import it.agilelab.bigdata.spark.search.evaluation.utils.{cluewebpage, wikipage}
+import it.agilelab.bigdata.spark.search.evaluation.utils.cluewebpage
+import it.agilelab.bigdata.spark.search.utils.wikipage
 
 trait Dataset[T] {
 	def name: String

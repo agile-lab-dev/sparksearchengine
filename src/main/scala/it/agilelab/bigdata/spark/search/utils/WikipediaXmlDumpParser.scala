@@ -3,7 +3,7 @@ package it.agilelab.bigdata.spark.search.utils
 import java.io.ByteArrayInputStream
 
 import com.databricks.spark.xml.XmlInputFormat
-import it.agilelab.bigdata.spark.search.evaluation.utils.wikipage
+import wikipage
 import org.apache.hadoop.io.{LongWritable, Text}
 import org.apache.spark.rdd.RDD
 import org.apache.spark.{SparkConf, SparkContext}

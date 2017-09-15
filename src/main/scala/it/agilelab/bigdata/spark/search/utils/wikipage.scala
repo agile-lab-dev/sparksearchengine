@@ -1,4 +1,4 @@
-package it.agilelab.bigdata.spark.search.evaluation.utils
+package it.agilelab.bigdata.spark.search.utils
 
 import it.agilelab.bigdata.spark.search.{Field, Indexable, Storeable, StringField}
 

@@ -4,8 +4,8 @@ import java.io.ByteArrayInputStream
 
 import scala.io.{BufferedSource, Codec}
 import scala.xml.pull.{EvElemEnd, EvElemStart, EvText, XMLEventReader}
-
 import com.databricks.spark.xml.XmlInputFormat
+import it.agilelab.bigdata.spark.search.utils.wikipage
 import org.apache.hadoop.io.{LongWritable, Text}
 import org.apache.spark.SparkContext
 import org.apache.spark.rdd.RDD

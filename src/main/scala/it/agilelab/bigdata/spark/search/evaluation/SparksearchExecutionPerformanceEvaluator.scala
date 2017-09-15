@@ -4,10 +4,10 @@ import java.io.PrintWriter
 
 import it.agilelab.bigdata.spark.search.dsl._
 import it.agilelab.bigdata.spark.search.SearchableRDD
-import it.agilelab.bigdata.spark.search.evaluation.utils.wikipage
 import it.agilelab.bigdata.spark.search.impl._
 import it.agilelab.bigdata.spark.search.impl.analyzers.EnglishWikipediaAnalyzer
 import it.agilelab.bigdata.spark.search.impl.queries.DefaultQueryConstructor
+import it.agilelab.bigdata.spark.search.utils.wikipage
 import org.apache.spark.storage.StorageLevel
 
 /** Evaluates execution performance of Sparksearch

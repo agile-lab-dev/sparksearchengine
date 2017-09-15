@@ -1,7 +1,7 @@
 package it.agilelab.bigdata.spark.search.examples
 
-import it.agilelab.bigdata.spark.search.evaluation.utils.wikipage
 import it.agilelab.bigdata.spark.search.impl.{LuceneConfig, PartitionsIndexLuceneRDD}
+import it.agilelab.bigdata.spark.search.utils.wikipage
 import it.agilelab.bigdata.spark.search.{Field, Storeable, StringField}
 import org.apache.spark.rdd.RDD
 import org.apache.spark.storage.StorageLevel

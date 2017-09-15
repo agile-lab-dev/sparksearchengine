@@ -3,9 +3,9 @@ package it.agilelab.bigdata.spark.search.evaluation
 import java.io.{File, PrintWriter}
 
 import scala.util.Random
-
 import it.agilelab.bigdata.spark.search.dsl._
-import it.agilelab.bigdata.spark.search.evaluation.utils.{IngestWikipedia, wikipage}
+import it.agilelab.bigdata.spark.search.evaluation.utils.IngestWikipedia
+import it.agilelab.bigdata.spark.search.utils.wikipage
 import org.apache.spark.rdd.RDD
 import org.apache.spark.storage.StorageLevel
 
