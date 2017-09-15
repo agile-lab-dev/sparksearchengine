@@ -1,4 +1,4 @@
-package it.agilelab.bigdata.spark.search.examples
+package it.agilelab.bigdata.spark.search.utils
 
 import java.io.ByteArrayInputStream
 
@@ -12,7 +12,7 @@ import scala.io.BufferedSource
 import scala.xml.pull._
 
 
-object ParseWikipediaDump {
+object WikipediaXmlDumpParser {
 	/**
 		* Parse a compressed Wikipedia xml dump (wiki-date-pages-articles-multistream.xml.bz2) into an RDD[wikipage], and
 		* save it as an object file.
