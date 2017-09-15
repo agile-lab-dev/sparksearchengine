@@ -1,8 +1,6 @@
 package it.agilelab.bigdata.spark.search.impl.analyzers;
 
-import java.io.Reader;
-
-import org.apache.lucene.analysis.Analyzer;
+import org.apache.lucene.analysis.Analyzer.TokenStreamComponents; // do not remove, needed for scaladoc to work!!
 import org.apache.lucene.analysis.TokenStream;
 import org.apache.lucene.analysis.Tokenizer;
 import org.apache.lucene.analysis.core.LowerCaseFilter;

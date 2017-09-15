@@ -1,11 +1,10 @@
 package it.agilelab.bigdata.spark.search.impl.analyzers;
 
 import java.io.IOException;
-import java.io.Reader;
 import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 
-import org.apache.lucene.analysis.Analyzer;
+import org.apache.lucene.analysis.Analyzer.TokenStreamComponents; // do not remove, needed for scaladoc to work!!
 import org.apache.lucene.analysis.core.LowerCaseFilter;
 import org.apache.lucene.analysis.core.StopFilter;
 import org.apache.lucene.analysis.it.ItalianLightStemFilter;

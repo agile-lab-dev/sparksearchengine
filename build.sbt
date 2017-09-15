@@ -36,7 +36,11 @@ libraryDependencies += "org.jsoup" % "jsoup" % "1.10.1"
 libraryDependencies += "org.elasticsearch" % "elasticsearch-spark_2.10" % "5.0.0-alpha4" % "provided"
 
 /* scaladoc */
-scalacOptions in (Compile, doc) ++= Seq("-doc-root-content", baseDirectory.value + "/root-doc.txt", "-groups")
+// configure root documentation
+scalacOptions in (Compile, doc) ++= Seq("-doc-root-content", baseDirectory.value + "/root-doc.txt")
+// enable groups
+scalacOptions in (Compile, doc) ++= Seq("-groups")
+// mappings for dependencies' docs
 autoAPIMappings := true
 apiMappings ++= {
   val cp: Seq[Attributed[File]] = (fullClasspath in Compile).value
