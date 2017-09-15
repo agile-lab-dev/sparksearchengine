@@ -1,31 +1,50 @@
 package it.agilelab.bigdata.spark.search.examples
 
-import scala.io.BufferedSource
-import scala.xml.pull._
 import java.io.ByteArrayInputStream
 
-import org.apache.spark.{SparkConf, SparkContext}
-import org.apache.hadoop.io.{LongWritable, Text}
 import com.databricks.spark.xml.XmlInputFormat
 import it.agilelab.bigdata.spark.search.evaluation.utils.wikipage
+import org.apache.hadoop.io.{LongWritable, Text}
+import org.apache.spark.rdd.RDD
+import org.apache.spark.{SparkConf, SparkContext}
+
+import scala.io.BufferedSource
+import scala.xml.pull._
 
 
-/**
-	* Parse a Wikipedia dump wiki-date-pages-articles-multistream.xml.bz2 int an RDD[wikpage], and save it as object file.
-	*
-	* Main method takes two arguments: the first is the path to the dump file, the second is the directory where the RDD
-	* resulting from the parsing will be saved.
-	*/
 object ParseWikipediaDump {
+	/**
+		* Parse a compressed Wikipedia xml dump (wiki-date-pages-articles-multistream.xml.bz2) into an RDD[wikipage], and
+		* save it as an object file.
+		*
+		* Takes two arguments: the first is the path to the dump file, the second is the directory where the RDD
+		* resulting from the parsing will be saved.
+		*/
 	def main(args: Array[String]): Unit = {
 		val conf = new SparkConf()
 			.setAppName("Parse Wikipedia dump file")
-		val sc = SparkContext.getOrCreate(conf)
+			.setMaster("local[4]")
+		val sc = new SparkContext(conf)
 		
 		// paths
 		val xmlPath = args(0) // input dump file path
 		val outputPath = args(1) // output directory path
 		
+		// read xml dump into an rdd of wikipages
+		val wikipages = xmlDumpToRdd(sc, xmlPath)
+		
+		// save as object file of wikipage
+		wikipages.coalesce(50).saveAsObjectFile(outputPath)
+	}
+	
+	/**
+		* Parse a compressed Wikipedia xml dump (wiki-date-pages-articles-multistream.xml.bz2) into an RDD[wikipage].
+		*
+		* @param sc SparkContext to use
+		* @param xmlPath input path to the compressed xml dump
+		* @return an RDD of Wikipages
+		*/
+	def xmlDumpToRdd(sc: SparkContext, xmlPath: String): RDD[wikipage] = {
 		// set hadoop input format
 		sc.hadoopConfiguration.set(XmlInputFormat.START_TAG_KEY, "<page>")
 		sc.hadoopConfiguration.set(XmlInputFormat.END_TAG_KEY, "</page>")
@@ -87,12 +106,11 @@ object ParseWikipediaDump {
 		}
 		
 		// parse records into tuples
-		val wikipedia = records map { parsePage(_) }
+		val wikipedia = records map parsePage
 		
 		// map tuple into wikipage
 		val wikipages = wikipedia map { case (title, text) => wikipage(title, text) }
 		
-		// save as object file of wikipage
-		wikipages.coalesce(50).saveAsObjectFile(outputPath)
+		wikipages
 	}
 }
