@@ -436,12 +436,13 @@ class DistributedIndexLuceneRDD[T] private[search] (val indexRDD: RDD[LuceneInde
 	
 	/** Like [[getElement(id:Long)* getElement(Long)]], but for an `Array` of ids. */
 	override def getElements(ids: Array[Long]): Array[(Long, Option[T])] = {
+		// get a set of ids for fast matching
+		val idSet = ids.toSet
 		// the ids are generated with zipWithUniqueIds, therefore we
 		// can easily find out the partition to which id belongs by
 		// calculating id modulo number of partitions
-		val partitionIndices = ids.toSet.map(_ % elementsRDD.getNumPartitions).toArray
-		// get a set of ids for fast matching
-		val idSet = ids.toSet
+		val partitionIndices = idSet.map(_ % elementsRDD.getNumPartitions).toArray
+		
 		val results = elementsRDD.mapPartitionsWithIndex {
 			case (partitionIndex, elements) => {
 				// get the subset of ids that are in this partition

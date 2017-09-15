@@ -551,13 +551,14 @@ class BroadcastIndexLuceneRDD[T] private[search] (
 	
 	/** Like [[getElement(id:Long)* getElement(Long)]], but for an `Array` of ids. */
 	override def getElements(ids: Array[Long]): Array[(Long, Option[T])] = {
+		// get a set of ids for fast matching
+		val idSet = ids.toSet
 		// the ids are generated with zipWithUniqueIds, therefore we
 		// can easily find out the partition to which id belongs by
 		// calculating id modulo number of partitions
 		val numPartitions = elementsRDD.getNumPartitions
-		val partitionIndices = ids.toSet.map(_ % numPartitions).toArray
-		// get a set of ids for fast matching
-		val idSet = ids.toSet
+		val partitionIndices = idSet.map(_ % numPartitions).toArray
+		
 		val results = elementsRDD.mapPartitionsWithIndex {
 			case (partitionIndex, elements) => {
 				// get the subset of ids that are in this partition
