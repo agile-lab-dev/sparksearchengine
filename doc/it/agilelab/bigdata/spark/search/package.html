@@ -1,0 +1,490 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html>
+        <head>
+          <title>search - it.agilelab.bigdata.spark.search</title>
+          <meta name="description" content="search - it.agilelab.bigdata.spark.search" />
+          <meta name="keywords" content="search it.agilelab.bigdata.spark.search" />
+          <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+          
+      <link href="../../../../../lib/template.css" media="screen" type="text/css" rel="stylesheet" />
+      <link href="../../../../../lib/diagrams.css" media="screen" type="text/css" rel="stylesheet" id="diagrams-css" />
+      <script type="text/javascript">
+         if(top === self) {
+            var url = '../../../../../index.html';
+            var hash = 'it.agilelab.bigdata.spark.search.package';
+            var anchor = window.location.hash;
+            var anchor_opt = '';
+            if (anchor.length >= 1)
+              anchor_opt = '@' + anchor.substring(1);
+            window.location.href = url + '#' + hash + anchor_opt;
+         }
+   	  </script>
+    
+        </head>
+        <body class="value">
+      <div id="definition">
+        <img src="../../../../../lib/package_big.png" />
+        <p id="owner"><a href="../../../../package.html" class="extype" name="it">it</a>.<a href="../../../package.html" class="extype" name="it.agilelab">agilelab</a>.<a href="../../package.html" class="extype" name="it.agilelab.bigdata">bigdata</a>.<a href="../package.html" class="extype" name="it.agilelab.bigdata.spark">spark</a></p>
+        <h1>search</h1>
+      </div>
+
+      <h4 id="signature" class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">package</span>
+      </span>
+      <span class="symbol">
+        <span class="name">search</span>
+      </span>
+      </h4>
+      
+          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Core functionality of Spark Search resides here.</p><p><a href="SearchableRDD.html" class="extype" name="it.agilelab.bigdata.spark.search.SearchableRDD">it.agilelab.bigdata.spark.search.SearchableRDD</a> and its implementations are the main classes which provide
+user-facing funcitonality.</p><p>There are three implementations available: <a href="impl/BroadcastIndexLuceneRDD.html" class="extype" name="it.agilelab.bigdata.spark.search.impl.BroadcastIndexLuceneRDD">it.agilelab.bigdata.spark.search.impl.BroadcastIndexLuceneRDD</a>,
+<a href="impl/PartitionsIndexLuceneRDD.html" class="extype" name="it.agilelab.bigdata.spark.search.impl.PartitionsIndexLuceneRDD">it.agilelab.bigdata.spark.search.impl.PartitionsIndexLuceneRDD</a> and
+<a href="impl/DistributedIndexLuceneRDD.html" class="extype" name="it.agilelab.bigdata.spark.search.impl.DistributedIndexLuceneRDD">it.agilelab.bigdata.spark.search.impl.DistributedIndexLuceneRDD</a>.
+</p></div><div class="toggleContainer block">
+          <span class="toggle">Linear Supertypes</span>
+          <div class="superTypes hiddenContent"><span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
+        </div></div>
+        
+
+      <div id="mbrsel">
+        <div id="textfilter"><span class="pre"></span><span class="input"><input id="mbrsel-input" type="text" accesskey="/" /></span><span class="post"></span></div>
+        <div id="order">
+              <span class="filtertype">Ordering</span>
+              <ol>
+                
+                <li class="alpha in"><span>Alphabetic</span></li>
+                <li class="inherit out"><span>By inheritance</span></li>
+              </ol>
+            </div>
+        <div id="ancestors">
+                <span class="filtertype">Inherited<br />
+                </span>
+                <ol id="linearization">
+                  <li class="in" name="it.agilelab.bigdata.spark.search"><span>search</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
+                </ol>
+              </div><div id="ancestors">
+            <span class="filtertype"></span>
+            <ol>
+              <li class="hideall out"><span>Hide All</span></li>
+              <li class="showall in"><span>Show all</span></li>
+            </ol>
+            <a href="http://docs.scala-lang.org/overviews/scaladoc/usage.html#members" target="_blank">Learn more about member selection</a>
+          </div>
+        <div id="visbl">
+            <span class="filtertype">Visibility</span>
+            <ol><li class="public in"><span>Public</span></li><li class="all out"><span>All</span></li></ol>
+          </div>
+      </div>
+
+      <div id="template">
+        <div id="allMembers">
+        
+
+        <div id="types" class="types members">
+              <h3>Type Members</h3>
+              <ol><li name="it.agilelab.bigdata.spark.search.DateField" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="DateFieldextendsField[java.util.Date]withProductwithSerializable"></a>
+      <a id="DateField:DateField"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="DateField.html"><span class="name">DateField</span></a><span class="params">(<span name="_name">_name: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="_value">_value: <span class="extype" name="java.util.Date">Date</span></span>)</span><span class="result"> extends <a href="Field.html" class="extype" name="it.agilelab.bigdata.spark.search.Field">Field</a>[<span class="extype" name="java.util.Date">Date</span>] with <a href="http://www.scala-lang.org/api/2.10.6/index.html#scala.Product" class="extype" target="_top">Product</a> with <a href="http://www.scala-lang.org/api/2.10.6/index.html#scala.Serializable" class="extype" target="_top">Serializable</a></span>
+      </span>
+      </h4>
+      
+    </li><li name="it.agilelab.bigdata.spark.search.Document" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="DocumentextendsSerializablewithIndexable"></a>
+      <a id="Document:Document"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="Document.html"><span class="name">Document</span></a><span class="result"> extends <a href="http://www.scala-lang.org/api/2.10.6/index.html#scala.Serializable" class="extype" target="_top">Serializable</a> with <a href="Indexable.html" class="extype" name="it.agilelab.bigdata.spark.search.Indexable">Indexable</a></span>
+      </span>
+      </h4>
+      
+    </li><li name="it.agilelab.bigdata.spark.search.DoubleField" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="DoubleFieldextendsField[Double]withProductwithSerializable"></a>
+      <a id="DoubleField:DoubleField"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="DoubleField.html"><span class="name">DoubleField</span></a><span class="params">(<span name="_name">_name: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="_value">_value: <a href="http://www.scala-lang.org/api/2.10.6/index.html#scala.Double" class="extype" target="_top">Double</a></span>)</span><span class="result"> extends <a href="Field.html" class="extype" name="it.agilelab.bigdata.spark.search.Field">Field</a>[<a href="http://www.scala-lang.org/api/2.10.6/index.html#scala.Double" class="extype" target="_top">Double</a>] with <a href="http://www.scala-lang.org/api/2.10.6/index.html#scala.Product" class="extype" target="_top">Product</a> with <a href="http://www.scala-lang.org/api/2.10.6/index.html#scala.Serializable" class="extype" target="_top">Serializable</a></span>
+      </span>
+      </h4>
+      
+    </li><li name="it.agilelab.bigdata.spark.search.Field" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="Field[T]extendsSerializable"></a>
+      <a id="Field[T]:Field[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">sealed abstract </span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="Field.html"><span class="name">Field</span></a><span class="tparams">[<span name="T">T</span>]</span><span class="result"> extends <a href="http://www.scala-lang.org/api/2.10.6/index.html#scala.Serializable" class="extype" target="_top">Serializable</a></span>
+      </span>
+      </h4>
+      
+    </li><li name="it.agilelab.bigdata.spark.search.FloatField" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="FloatFieldextendsField[Float]withProductwithSerializable"></a>
+      <a id="FloatField:FloatField"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="FloatField.html"><span class="name">FloatField</span></a><span class="params">(<span name="_name">_name: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="_value">_value: <a href="http://www.scala-lang.org/api/2.10.6/index.html#scala.Float" class="extype" target="_top">Float</a></span>)</span><span class="result"> extends <a href="Field.html" class="extype" name="it.agilelab.bigdata.spark.search.Field">Field</a>[<a href="http://www.scala-lang.org/api/2.10.6/index.html#scala.Float" class="extype" target="_top">Float</a>] with <a href="http://www.scala-lang.org/api/2.10.6/index.html#scala.Product" class="extype" target="_top">Product</a> with <a href="http://www.scala-lang.org/api/2.10.6/index.html#scala.Serializable" class="extype" target="_top">Serializable</a></span>
+      </span>
+      </h4>
+      
+    </li><li name="it.agilelab.bigdata.spark.search.Index" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="IndexextendsSerializable"></a>
+      <a id="Index:Index"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="Index.html"><span class="name">Index</span></a><span class="result"> extends <a href="http://www.scala-lang.org/api/2.10.6/index.html#scala.Serializable" class="extype" target="_top">Serializable</a></span>
+      </span>
+      </h4>
+      <p class="comment cmt">An index.</p>
+    </li><li name="it.agilelab.bigdata.spark.search.IndexInfo" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="IndexInfoextendsProductwithSerializable"></a>
+      <a id="IndexInfo:IndexInfo"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="IndexInfo.html"><span class="name">IndexInfo</span></a><span class="params">(<span name="numDocuments">numDocuments: <a href="http://www.scala-lang.org/api/2.10.6/index.html#scala.Int" class="extype" target="_top">Int</a></span>, <span name="sizeBytes">sizeBytes: <a href="http://www.scala-lang.org/api/2.10.6/index.html#scala.Long" class="extype" target="_top">Long</a></span>, <span name="numSegments">numSegments: <a href="http://www.scala-lang.org/api/2.10.6/index.html#scala.Int" class="extype" target="_top">Int</a></span>)</span><span class="result"> extends <a href="http://www.scala-lang.org/api/2.10.6/index.html#scala.Product" class="extype" target="_top">Product</a> with <a href="http://www.scala-lang.org/api/2.10.6/index.html#scala.Serializable" class="extype" target="_top">Serializable</a></span>
+      </span>
+      </h4>
+      <p class="comment cmt">Information about an index.</p>
+    </li><li name="it.agilelab.bigdata.spark.search.Indexable" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="IndexableextendsAnyRef"></a>
+      <a id="Indexable:Indexable"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="Indexable.html"><span class="name">Indexable</span></a><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+      </span>
+      </h4>
+      <p class="comment cmt">An indexable element.</p>
+    </li><li name="it.agilelab.bigdata.spark.search.IndexedPartition" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="IndexedPartition[T]extendsSerializable"></a>
+      <a id="IndexedPartition[T]:IndexedPartition[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="IndexedPartition.html"><span class="name">IndexedPartition</span></a><span class="tparams">[<span name="T">T</span>]</span><span class="result"> extends <a href="http://www.scala-lang.org/api/2.10.6/index.html#scala.Serializable" class="extype" target="_top">Serializable</a></span>
+      </span>
+      </h4>
+      <p class="comment cmt">An indexed partition.</p>
+    </li><li name="it.agilelab.bigdata.spark.search.IndicesInfo" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="IndicesInfoextendsProductwithSerializable"></a>
+      <a id="IndicesInfo:IndicesInfo"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="IndicesInfo.html"><span class="name">IndicesInfo</span></a><span class="params">(<span name="numIndices">numIndices: <a href="http://www.scala-lang.org/api/2.10.6/index.html#scala.Int" class="extype" target="_top">Int</a></span>, <span name="numDocuments">numDocuments: <a href="http://www.scala-lang.org/api/2.10.6/index.html#scala.Long" class="extype" target="_top">Long</a></span>, <span name="sizeBytes">sizeBytes: <a href="http://www.scala-lang.org/api/2.10.6/index.html#scala.Long" class="extype" target="_top">Long</a></span>, <span name="indicesInfo">indicesInfo: <span class="extype" name="scala.List">List</span>[<a href="IndexInfo.html" class="extype" name="it.agilelab.bigdata.spark.search.IndexInfo">IndexInfo</a>]</span>)</span><span class="result"> extends <a href="http://www.scala-lang.org/api/2.10.6/index.html#scala.Product" class="extype" target="_top">Product</a> with <a href="http://www.scala-lang.org/api/2.10.6/index.html#scala.Serializable" class="extype" target="_top">Serializable</a></span>
+      </span>
+      </h4>
+      <p class="comment cmt">Global information about the indices.</p>
+    </li><li name="it.agilelab.bigdata.spark.search.IntField" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="IntFieldextendsField[Int]withProductwithSerializable"></a>
+      <a id="IntField:IntField"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="IntField.html"><span class="name">IntField</span></a><span class="params">(<span name="_name">_name: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="_value">_value: <a href="http://www.scala-lang.org/api/2.10.6/index.html#scala.Int" class="extype" target="_top">Int</a></span>)</span><span class="result"> extends <a href="Field.html" class="extype" name="it.agilelab.bigdata.spark.search.Field">Field</a>[<a href="http://www.scala-lang.org/api/2.10.6/index.html#scala.Int" class="extype" target="_top">Int</a>] with <a href="http://www.scala-lang.org/api/2.10.6/index.html#scala.Product" class="extype" target="_top">Product</a> with <a href="http://www.scala-lang.org/api/2.10.6/index.html#scala.Serializable" class="extype" target="_top">Serializable</a></span>
+      </span>
+      </h4>
+      
+    </li><li name="it.agilelab.bigdata.spark.search.LongField" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="LongFieldextendsField[Long]withProductwithSerializable"></a>
+      <a id="LongField:LongField"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="LongField.html"><span class="name">LongField</span></a><span class="params">(<span name="_name">_name: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="_value">_value: <a href="http://www.scala-lang.org/api/2.10.6/index.html#scala.Long" class="extype" target="_top">Long</a></span>)</span><span class="result"> extends <a href="Field.html" class="extype" name="it.agilelab.bigdata.spark.search.Field">Field</a>[<a href="http://www.scala-lang.org/api/2.10.6/index.html#scala.Long" class="extype" target="_top">Long</a>] with <a href="http://www.scala-lang.org/api/2.10.6/index.html#scala.Product" class="extype" target="_top">Product</a> with <a href="http://www.scala-lang.org/api/2.10.6/index.html#scala.Serializable" class="extype" target="_top">Serializable</a></span>
+      </span>
+      </h4>
+      
+    </li><li name="it.agilelab.bigdata.spark.search.NoPositionsStringField" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="NoPositionsStringFieldextendsField[String]withProductwithSerializable"></a>
+      <a id="NoPositionsStringField:NoPositionsStringField"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="NoPositionsStringField.html"><span class="name">NoPositionsStringField</span></a><span class="params">(<span name="_name">_name: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="_value">_value: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result"> extends <a href="Field.html" class="extype" name="it.agilelab.bigdata.spark.search.Field">Field</a>[<span class="extype" name="scala.Predef.String">String</span>] with <a href="http://www.scala-lang.org/api/2.10.6/index.html#scala.Product" class="extype" target="_top">Product</a> with <a href="http://www.scala-lang.org/api/2.10.6/index.html#scala.Serializable" class="extype" target="_top">Serializable</a></span>
+      </span>
+      </h4>
+      
+    </li><li name="it.agilelab.bigdata.spark.search.Query" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="QueryextendsSerializable"></a>
+      <a id="Query:Query"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="Query.html"><span class="name">Query</span></a><span class="result"> extends <a href="http://www.scala-lang.org/api/2.10.6/index.html#scala.Serializable" class="extype" target="_top">Serializable</a></span>
+      </span>
+      </h4>
+      
+    </li><li name="it.agilelab.bigdata.spark.search.RawQuery" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="RawQueryextendsQuerywithProductwithSerializable"></a>
+      <a id="RawQuery:RawQuery"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="RawQuery.html"><span class="name">RawQuery</span></a><span class="params">(<span name="queryString">queryString: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result"> extends <a href="Query.html" class="extype" name="it.agilelab.bigdata.spark.search.Query">Query</a> with <a href="http://www.scala-lang.org/api/2.10.6/index.html#scala.Product" class="extype" target="_top">Product</a> with <a href="http://www.scala-lang.org/api/2.10.6/index.html#scala.Serializable" class="extype" target="_top">Serializable</a></span>
+      </span>
+      </h4>
+      
+    </li><li name="it.agilelab.bigdata.spark.search.SearchableRDD" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="SearchableRDD[T]extendsRDD[T]"></a>
+      <a id="SearchableRDD[T]:SearchableRDD[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="SearchableRDD.html"><span class="name">SearchableRDD</span></a><span class="tparams">[<span name="T">T</span>]</span><span class="result"> extends <a href="http://spark.apache.org/docs/1.6.2/api/scala/index.html#org.apache.spark.rdd.RDD" class="extype" target="_top">RDD</a>[<span class="extype" name="it.agilelab.bigdata.spark.search.SearchableRDD.T">T</span>]</span>
+      </span>
+      </h4>
+      <p class="comment cmt">Indexed RDD that provides search functionality.</p>
+    </li><li name="it.agilelab.bigdata.spark.search.SeqField" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="SeqFieldextendsField[Seq[_]]withProductwithSerializable"></a>
+      <a id="SeqField:SeqField"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="SeqField.html"><span class="name">SeqField</span></a><span class="params">(<span name="_name">_name: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="_value">_value: <span class="extype" name="scala.Seq">Seq</span>[_]</span>)</span><span class="result"> extends <a href="Field.html" class="extype" name="it.agilelab.bigdata.spark.search.Field">Field</a>[<span class="extype" name="scala.Seq">Seq</span>[_]] with <a href="http://www.scala-lang.org/api/2.10.6/index.html#scala.Product" class="extype" target="_top">Product</a> with <a href="http://www.scala-lang.org/api/2.10.6/index.html#scala.Serializable" class="extype" target="_top">Serializable</a></span>
+      </span>
+      </h4>
+      
+    </li><li name="it.agilelab.bigdata.spark.search.Storeable" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="Storeable[T]extendsIndexable"></a>
+      <a id="Storeable[T]:Storeable[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="Storeable.html"><span class="name">Storeable</span></a><span class="tparams">[<span name="T">T</span>]</span><span class="result"> extends <a href="Indexable.html" class="extype" name="it.agilelab.bigdata.spark.search.Indexable">Indexable</a></span>
+      </span>
+      </h4>
+      
+    </li><li name="it.agilelab.bigdata.spark.search.StringField" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="StringFieldextendsField[String]withProductwithSerializable"></a>
+      <a id="StringField:StringField"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="StringField.html"><span class="name">StringField</span></a><span class="params">(<span name="_name">_name: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="_value">_value: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result"> extends <a href="Field.html" class="extype" name="it.agilelab.bigdata.spark.search.Field">Field</a>[<span class="extype" name="scala.Predef.String">String</span>] with <a href="http://www.scala-lang.org/api/2.10.6/index.html#scala.Product" class="extype" target="_top">Product</a> with <a href="http://www.scala-lang.org/api/2.10.6/index.html#scala.Serializable" class="extype" target="_top">Serializable</a></span>
+      </span>
+      </h4>
+      
+    </li></ol>
+            </div>
+
+        
+
+        <div id="values" class="values members">
+              <h3>Value Members</h3>
+              <ol><li name="it.agilelab.bigdata.spark.search.Indexable" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="Indexable"></a>
+      <a id="Indexable:Indexable"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="Indexable$.html"><span class="name">Indexable</span></a><span class="result"> extends <a href="utils/Logging.html" class="extype" name="it.agilelab.bigdata.spark.search.utils.Logging">Logging</a></span>
+      </span>
+      </h4>
+      
+    </li><li name="it.agilelab.bigdata.spark.search.package#SPARK_SEARCH_VERSION" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="SPARK_SEARCH_VERSION:String"></a>
+      <a id="SPARK_SEARCH_VERSION:String"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">SPARK_SEARCH_VERSION</span><span class="result">: <span class="extype" name="java.lang.String">String</span></span>
+      </span>
+      </h4>
+      
+    </li><li name="it.agilelab.bigdata.spark.search.SearchableRDD" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="SearchableRDD"></a>
+      <a id="SearchableRDD:SearchableRDD"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="SearchableRDD$.html"><span class="name">SearchableRDD</span></a><span class="result"> extends <a href="http://www.scala-lang.org/api/2.10.6/index.html#scala.Serializable" class="extype" target="_top">Serializable</a></span>
+      </span>
+      </h4>
+      
+    </li><li name="it.agilelab.bigdata.spark.search.dsl" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="dsl"></a>
+      <a id="dsl:dsl"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">package</span>
+      </span>
+      <span class="symbol">
+        <a href="dsl/package.html"><span class="name">dsl</span></a>
+      </span>
+      </h4>
+      
+    </li><li name="it.agilelab.bigdata.spark.search.evaluation" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="evaluation"></a>
+      <a id="evaluation:evaluation"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">package</span>
+      </span>
+      <span class="symbol">
+        <a href="evaluation/package.html"><span class="name">evaluation</span></a>
+      </span>
+      </h4>
+      
+    </li><li name="it.agilelab.bigdata.spark.search.examples" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="examples"></a>
+      <a id="examples:examples"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">package</span>
+      </span>
+      <span class="symbol">
+        <a href="examples/package.html"><span class="name">examples</span></a>
+      </span>
+      </h4>
+      
+    </li><li name="it.agilelab.bigdata.spark.search.impl" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="impl"></a>
+      <a id="impl:impl"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">package</span>
+      </span>
+      <span class="symbol">
+        <a href="impl/package.html"><span class="name">impl</span></a>
+      </span>
+      </h4>
+      
+    </li><li name="it.agilelab.bigdata.spark.search.serialization" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="serialization"></a>
+      <a id="serialization:serialization"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">package</span>
+      </span>
+      <span class="symbol">
+        <a href="serialization/package.html"><span class="name">serialization</span></a>
+      </span>
+      </h4>
+      
+    </li><li name="it.agilelab.bigdata.spark.search.utils" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="utils"></a>
+      <a id="utils:utils"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">package</span>
+      </span>
+      <span class="symbol">
+        <a href="utils/package.html"><span class="name">utils</span></a>
+      </span>
+      </h4>
+      
+    </li></ol>
+            </div>
+
+        
+
+        
+        </div>
+
+        <div id="inheritedMembers">
+        <div class="parent" name="scala.AnyRef">
+              <h3>Inherited from <span class="extype" name="scala.AnyRef">AnyRef</span></h3>
+            </div><div class="parent" name="scala.Any">
+              <h3>Inherited from <span class="extype" name="scala.Any">Any</span></h3>
+            </div>
+        
+        </div>
+
+        <div id="groupedMembers">
+        <div class="group" name="Ungrouped">
+              <h3>Ungrouped</h3>
+              
+            </div>
+        </div>
+
+      </div>
+
+      <div id="tooltip"></div>
+
+      <div id="footer">  </div>
+      <script defer="defer" type="text/javascript" id="jquery-js" src="../../../../../lib/jquery.js"></script><script defer="defer" type="text/javascript" id="jquery-ui-js" src="../../../../../lib/jquery-ui.js"></script><script defer="defer" type="text/javascript" id="tools-tooltip-js" src="../../../../../lib/tools.tooltip.js"></script><script defer="defer" type="text/javascript" id="template-js" src="../../../../../lib/template.js"></script>
+    </body>
+      </html>

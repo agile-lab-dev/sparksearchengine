@@ -1,0 +1,422 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html>
+        <head>
+          <title>impl - it.agilelab.bigdata.spark.search.impl</title>
+          <meta name="description" content="impl - it.agilelab.bigdata.spark.search.impl" />
+          <meta name="keywords" content="impl it.agilelab.bigdata.spark.search.impl" />
+          <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+          
+      <link href="../../../../../../lib/template.css" media="screen" type="text/css" rel="stylesheet" />
+      <link href="../../../../../../lib/diagrams.css" media="screen" type="text/css" rel="stylesheet" id="diagrams-css" />
+      <script type="text/javascript">
+         if(top === self) {
+            var url = '../../../../../../index.html';
+            var hash = 'it.agilelab.bigdata.spark.search.impl.package';
+            var anchor = window.location.hash;
+            var anchor_opt = '';
+            if (anchor.length >= 1)
+              anchor_opt = '@' + anchor.substring(1);
+            window.location.href = url + '#' + hash + anchor_opt;
+         }
+   	  </script>
+    
+        </head>
+        <body class="value">
+      <div id="definition">
+        <img src="../../../../../../lib/package_big.png" />
+        <p id="owner"><a href="../../../../../package.html" class="extype" name="it">it</a>.<a href="../../../../package.html" class="extype" name="it.agilelab">agilelab</a>.<a href="../../../package.html" class="extype" name="it.agilelab.bigdata">bigdata</a>.<a href="../../package.html" class="extype" name="it.agilelab.bigdata.spark">spark</a>.<a href="../package.html" class="extype" name="it.agilelab.bigdata.spark.search">search</a></p>
+        <h1>impl</h1>
+      </div>
+
+      <h4 id="signature" class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">package</span>
+      </span>
+      <span class="symbol">
+        <span class="name">impl</span>
+      </span>
+      </h4>
+      
+          <div id="comment" class="fullcommenttop"></div>
+        
+
+      <div id="mbrsel">
+        <div id="textfilter"><span class="pre"></span><span class="input"><input id="mbrsel-input" type="text" accesskey="/" /></span><span class="post"></span></div>
+        
+        
+        <div id="visbl">
+            <span class="filtertype">Visibility</span>
+            <ol><li class="public in"><span>Public</span></li><li class="all out"><span>All</span></li></ol>
+          </div>
+      </div>
+
+      <div id="template">
+        <div id="allMembers">
+        
+
+        <div id="types" class="types members">
+              <h3>Type Members</h3>
+              <ol><li name="it.agilelab.bigdata.spark.search.impl.BaseDirectoryShim" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="BaseDirectoryShimextendsBaseDirectory"></a>
+      <a id="BaseDirectoryShim:BaseDirectoryShim"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="BaseDirectoryShim.html"><span class="name">BaseDirectoryShim</span></a><span class="result"> extends <span class="extype" name="org.apache.lucene.store.BaseDirectory">BaseDirectory</span></span>
+      </span>
+      </h4>
+      
+    </li><li name="it.agilelab.bigdata.spark.search.impl.BigChunksRAMDirectory" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="BigChunksRAMDirectoryextendsBaseDirectoryShimwithAccountablewithSerializable"></a>
+      <a id="BigChunksRAMDirectory:BigChunksRAMDirectory"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="BigChunksRAMDirectory.html"><span class="name">BigChunksRAMDirectory</span></a><span class="result"> extends <a href="BaseDirectoryShim.html" class="extype" name="it.agilelab.bigdata.spark.search.impl.BaseDirectoryShim">BaseDirectoryShim</a> with <span class="extype" name="org.apache.lucene.util.Accountable">Accountable</span> with <span class="extype" name="java.io.Serializable">Serializable</span></span>
+      </span>
+      </h4>
+      
+    </li><li name="it.agilelab.bigdata.spark.search.impl.BigChunksRAMFile" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="BigChunksRAMFileextendsAccountablewithSerializable"></a>
+      <a id="BigChunksRAMFile:BigChunksRAMFile"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="BigChunksRAMFile.html"><span class="name">BigChunksRAMFile</span></a><span class="result"> extends <span class="extype" name="org.apache.lucene.util.Accountable">Accountable</span> with <span class="extype" name="java.io.Serializable">Serializable</span></span>
+      </span>
+      </h4>
+      
+    </li><li name="it.agilelab.bigdata.spark.search.impl.BigChunksRAMInputStream" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="BigChunksRAMInputStreamextendsIndexInputwithCloneable"></a>
+      <a id="BigChunksRAMInputStream:BigChunksRAMInputStream"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="BigChunksRAMInputStream.html"><span class="name">BigChunksRAMInputStream</span></a><span class="result"> extends <span class="extype" name="org.apache.lucene.store.IndexInput">IndexInput</span> with <span class="extype" name="java.lang.Cloneable">Cloneable</span></span>
+      </span>
+      </h4>
+      
+    </li><li name="it.agilelab.bigdata.spark.search.impl.BigChunksRAMOutputStream" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="BigChunksRAMOutputStreamextendsIndexOutputwithAccountable"></a>
+      <a id="BigChunksRAMOutputStream:BigChunksRAMOutputStream"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="BigChunksRAMOutputStream.html"><span class="name">BigChunksRAMOutputStream</span></a><span class="result"> extends <span class="extype" name="org.apache.lucene.store.IndexOutput">IndexOutput</span> with <span class="extype" name="org.apache.lucene.util.Accountable">Accountable</span></span>
+      </span>
+      </h4>
+      
+    </li><li name="it.agilelab.bigdata.spark.search.impl.BroadcastIndexLuceneRDD" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="BroadcastIndexLuceneRDD[T]extendsSearchableRDD[T]"></a>
+      <a id="BroadcastIndexLuceneRDD[T]:BroadcastIndexLuceneRDD[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="BroadcastIndexLuceneRDD.html"><span class="name">BroadcastIndexLuceneRDD</span></a><span class="tparams">[<span name="T">T</span>]</span><span class="result"> extends <a href="../SearchableRDD.html" class="extype" name="it.agilelab.bigdata.spark.search.SearchableRDD">SearchableRDD</a>[<span class="extype" name="it.agilelab.bigdata.spark.search.impl.BroadcastIndexLuceneRDD.T">T</span>]</span>
+      </span>
+      </h4>
+      
+    </li><li name="it.agilelab.bigdata.spark.search.impl.Configurable" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="ConfigurableextendsAnyRef"></a>
+      <a id="Configurable:Configurable"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="Configurable.html"><span class="name">Configurable</span></a><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+      </span>
+      </h4>
+      <p class="comment cmt">A configurable component, such that its configuration can be saved when it is
+serialized and restored when deserialized.</p>
+    </li><li name="it.agilelab.bigdata.spark.search.impl.CustomCodec" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="CustomCodecextendsCodec"></a>
+      <a id="CustomCodec:CustomCodec"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="CustomCodec.html"><span class="name">CustomCodec</span></a><span class="result"> extends <span class="extype" name="org.apache.lucene.codecs.Codec">Codec</span></span>
+      </span>
+      </h4>
+      
+    </li><li name="it.agilelab.bigdata.spark.search.impl.DistributedIndexLuceneRDD" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="DistributedIndexLuceneRDD[T]extendsSearchableRDD[T]"></a>
+      <a id="DistributedIndexLuceneRDD[T]:DistributedIndexLuceneRDD[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="DistributedIndexLuceneRDD.html"><span class="name">DistributedIndexLuceneRDD</span></a><span class="tparams">[<span name="T">T</span>]</span><span class="result"> extends <a href="../SearchableRDD.html" class="extype" name="it.agilelab.bigdata.spark.search.SearchableRDD">SearchableRDD</a>[<span class="extype" name="it.agilelab.bigdata.spark.search.impl.DistributedIndexLuceneRDD.T">T</span>]</span>
+      </span>
+      </h4>
+      <p class="comment cmt">SearchableRDD implementation using Lucene.</p>
+    </li><li name="it.agilelab.bigdata.spark.search.impl.GlobalIDFLuceneIndex" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="GlobalIDFLuceneIndexextendsLuceneIndex"></a>
+      <a id="GlobalIDFLuceneIndex:GlobalIDFLuceneIndex"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="GlobalIDFLuceneIndex.html"><span class="name">GlobalIDFLuceneIndex</span></a><span class="result"> extends <a href="LuceneIndex.html" class="extype" name="it.agilelab.bigdata.spark.search.impl.LuceneIndex">LuceneIndex</a></span>
+      </span>
+      </h4>
+      <p class="comment cmt">Lucene-based implementation of <code> it.agilelab.bigdata.spark.search.Index</code> with global IDF support.</p>
+    </li><li name="it.agilelab.bigdata.spark.search.impl.LuceneConfig" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="LuceneConfigextendsSerializablewithKryoSerializable"></a>
+      <a id="LuceneConfig:LuceneConfig"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="LuceneConfig.html"><span class="name">LuceneConfig</span></a><span class="result"> extends <a href="http://www.scala-lang.org/api/2.10.6/index.html#scala.Serializable" class="extype" target="_top">Serializable</a> with <span class="extype" name="com.esotericsoftware.kryo.KryoSerializable">KryoSerializable</span></span>
+      </span>
+      </h4>
+      
+    </li><li name="it.agilelab.bigdata.spark.search.impl.LuceneIndex" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="LuceneIndexextendsIndexwithKryoSerializable"></a>
+      <a id="LuceneIndex:LuceneIndex"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="LuceneIndex.html"><span class="name">LuceneIndex</span></a><span class="result"> extends <a href="../Index.html" class="extype" name="it.agilelab.bigdata.spark.search.Index">Index</a> with <span class="extype" name="com.esotericsoftware.kryo.KryoSerializable">KryoSerializable</span></span>
+      </span>
+      </h4>
+      <p class="comment cmt">Lucene-based implementation of <code> it.agilelab.bigdata.spark.search.Index</code>.</p>
+    </li><li name="it.agilelab.bigdata.spark.search.impl.LuceneIndexedPartition" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="LuceneIndexedPartition[T]extendsIndexedPartition[T]"></a>
+      <a id="LuceneIndexedPartition[T]:LuceneIndexedPartition[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="LuceneIndexedPartition.html"><span class="name">LuceneIndexedPartition</span></a><span class="tparams">[<span name="T">T</span>]</span><span class="result"> extends <a href="../IndexedPartition.html" class="extype" name="it.agilelab.bigdata.spark.search.IndexedPartition">IndexedPartition</a>[<span class="extype" name="it.agilelab.bigdata.spark.search.impl.LuceneIndexedPartition.T">T</span>]</span>
+      </span>
+      </h4>
+      <p class="comment cmt">Created by m1lt0n on 29/02/16.</p>
+    </li><li name="it.agilelab.bigdata.spark.search.impl.NoPositionsTextField" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="NoPositionsTextFieldextendsField"></a>
+      <a id="NoPositionsTextField:NoPositionsTextField"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="NoPositionsTextField.html"><span class="name">NoPositionsTextField</span></a><span class="result"> extends <span class="extype" name="org.apache.lucene.document.Field">org.apache.lucene.document.Field</span></span>
+      </span>
+      </h4>
+      
+    </li><li name="it.agilelab.bigdata.spark.search.impl.PartitionsIndexLuceneRDD" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="PartitionsIndexLuceneRDD[T]extendsSearchableRDD[T]"></a>
+      <a id="PartitionsIndexLuceneRDD[T]:PartitionsIndexLuceneRDD[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="PartitionsIndexLuceneRDD.html"><span class="name">PartitionsIndexLuceneRDD</span></a><span class="tparams">[<span name="T">T</span>]</span><span class="result"> extends <a href="../SearchableRDD.html" class="extype" name="it.agilelab.bigdata.spark.search.SearchableRDD">SearchableRDD</a>[<span class="extype" name="it.agilelab.bigdata.spark.search.impl.PartitionsIndexLuceneRDD.T">T</span>]</span>
+      </span>
+      </h4>
+      <p class="comment cmt">Implements SearchableRDD as an RDD of LuceneIndexedPartition
+</p>
+    </li></ol>
+            </div>
+
+        
+
+        <div id="values" class="values members">
+              <h3>Value Members</h3>
+              <ol><li name="it.agilelab.bigdata.spark.search.impl.BroadcastIndexLuceneRDD" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="BroadcastIndexLuceneRDD"></a>
+      <a id="BroadcastIndexLuceneRDD:BroadcastIndexLuceneRDD"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="BroadcastIndexLuceneRDD$.html"><span class="name">BroadcastIndexLuceneRDD</span></a><span class="result"> extends <a href="http://www.scala-lang.org/api/2.10.6/index.html#scala.Serializable" class="extype" target="_top">Serializable</a></span>
+      </span>
+      </h4>
+      
+    </li><li name="it.agilelab.bigdata.spark.search.impl.DistributedIndexLuceneRDD" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="DistributedIndexLuceneRDD"></a>
+      <a id="DistributedIndexLuceneRDD:DistributedIndexLuceneRDD"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="DistributedIndexLuceneRDD$.html"><span class="name">DistributedIndexLuceneRDD</span></a><span class="result"> extends <a href="http://www.scala-lang.org/api/2.10.6/index.html#scala.Serializable" class="extype" target="_top">Serializable</a></span>
+      </span>
+      </h4>
+      
+    </li><li name="it.agilelab.bigdata.spark.search.impl.GlobalIDFLuceneIndex" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="GlobalIDFLuceneIndex"></a>
+      <a id="GlobalIDFLuceneIndex:GlobalIDFLuceneIndex"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="GlobalIDFLuceneIndex$.html"><span class="name">GlobalIDFLuceneIndex</span></a><span class="result"> extends <a href="http://www.scala-lang.org/api/2.10.6/index.html#scala.Serializable" class="extype" target="_top">Serializable</a></span>
+      </span>
+      </h4>
+      
+    </li><li name="it.agilelab.bigdata.spark.search.impl.LuceneConfig" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="LuceneConfig"></a>
+      <a id="LuceneConfig:LuceneConfig"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="LuceneConfig$.html"><span class="name">LuceneConfig</span></a><span class="result"> extends <a href="http://www.scala-lang.org/api/2.10.6/index.html#scala.Serializable" class="extype" target="_top">Serializable</a></span>
+      </span>
+      </h4>
+      
+    </li><li name="it.agilelab.bigdata.spark.search.impl.LuceneIndex" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="LuceneIndex"></a>
+      <a id="LuceneIndex:LuceneIndex"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="LuceneIndex$.html"><span class="name">LuceneIndex</span></a><span class="result"> extends <a href="http://www.scala-lang.org/api/2.10.6/index.html#scala.Serializable" class="extype" target="_top">Serializable</a></span>
+      </span>
+      </h4>
+      
+    </li><li name="it.agilelab.bigdata.spark.search.impl.LuceneIndexedPartition" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="LuceneIndexedPartition"></a>
+      <a id="LuceneIndexedPartition:LuceneIndexedPartition"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="LuceneIndexedPartition$.html"><span class="name">LuceneIndexedPartition</span></a><span class="result"> extends <a href="http://www.scala-lang.org/api/2.10.6/index.html#scala.Serializable" class="extype" target="_top">Serializable</a></span>
+      </span>
+      </h4>
+      
+    </li><li name="it.agilelab.bigdata.spark.search.impl.PartitionsIndexLuceneRDD" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="PartitionsIndexLuceneRDD"></a>
+      <a id="PartitionsIndexLuceneRDD:PartitionsIndexLuceneRDD"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="PartitionsIndexLuceneRDD$.html"><span class="name">PartitionsIndexLuceneRDD</span></a><span class="result"> extends <a href="http://www.scala-lang.org/api/2.10.6/index.html#scala.Serializable" class="extype" target="_top">Serializable</a></span>
+      </span>
+      </h4>
+      
+    </li><li name="it.agilelab.bigdata.spark.search.impl.analyzers" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="analyzers"></a>
+      <a id="analyzers:analyzers"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">package</span>
+      </span>
+      <span class="symbol">
+        <a href="analyzers/package.html"><span class="name">analyzers</span></a>
+      </span>
+      </h4>
+      
+    </li><li name="it.agilelab.bigdata.spark.search.impl.queries" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="queries"></a>
+      <a id="queries:queries"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">package</span>
+      </span>
+      <span class="symbol">
+        <a href="queries/package.html"><span class="name">queries</span></a>
+      </span>
+      </h4>
+      
+    </li><li name="it.agilelab.bigdata.spark.search.impl.similarities" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="similarities"></a>
+      <a id="similarities:similarities"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">package</span>
+      </span>
+      <span class="symbol">
+        <a href="similarities/package.html"><span class="name">similarities</span></a>
+      </span>
+      </h4>
+      
+    </li></ol>
+            </div>
+
+        
+
+        
+        </div>
+
+        <div id="inheritedMembers">
+        
+        
+        </div>
+
+        <div id="groupedMembers">
+        <div class="group" name="Ungrouped">
+              <h3>Ungrouped</h3>
+              
+            </div>
+        </div>
+
+      </div>
+
+      <div id="tooltip"></div>
+
+      <div id="footer">  </div>
+      <script defer="defer" type="text/javascript" id="jquery-js" src="../../../../../../lib/jquery.js"></script><script defer="defer" type="text/javascript" id="jquery-ui-js" src="../../../../../../lib/jquery-ui.js"></script><script defer="defer" type="text/javascript" id="tools-tooltip-js" src="../../../../../../lib/tools.tooltip.js"></script><script defer="defer" type="text/javascript" id="template-js" src="../../../../../../lib/template.js"></script>
+    </body>
+      </html>
