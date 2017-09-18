@@ -9,11 +9,15 @@
 
 Add the repository to your resolvers:
 
-`resolvers += Resolver.bintrayRepo("agile-lab-dev", "SparkSearchEngine")`
+```sbtshell
+resolvers += Resolver.bintrayRepo("agile-lab-dev", "SparkSearchEngine")
+```
 
 Add the dependency:
 
-`libraryDependencies += "it.agilelab" %% "spark-search" % "0.1"`
+```sbtshell
+libraryDependencies += "it.agilelab" %% "spark-search" % "0.1"
+```
 
 ## Documentation
 
@@ -36,7 +40,7 @@ Head over to [https://dumps.wikimedia.org/simplewiki/] and grab the latest dump;
 
 First, we parse the XML dump into and `RDD[wikipage]`:
 
-```
+```scala
 import it.agilelab.bigdata.spark.search.utils.WikipediaXmlDumpParser.xmlDumpToRdd
 import it.agilelab.bigdata.spark.search.utils.wikipage
 
@@ -49,13 +53,13 @@ val wikipages = xmlDumpToRdd(sc, xmlPath).cache()
 
 We now check how many pages we got:
 
-```
+```scala
 println(s"Number of pages: ${wikipages.count()}")
 ```
 
 Let's make it a `SearchableRDD`:
 
-```
+```scala
 import it.agilelab.bigdata.spark.search.SearchableRDD
 import it.agilelab.bigdata.spark.search.dsl._
 import it.agilelab.bigdata.spark.search.impl.analyzers.EnglishWikipediaAnalyzer
@@ -71,7 +75,7 @@ val searchable: SearchableRDD[wikipage] = DistributedIndexLuceneRDD(wikipages, 2
 
 We can now do queries:
 
-```
+```scala
 // define a query using the DSL
 val query = "text" matchAll termSet("island")
 
@@ -85,7 +89,7 @@ queryResults foreach { result => println(f"\tscore: ${result._2}%6.3f title: ${r
 
 Get information about the indices that were built:
 
-```
+```scala
 val indicesInfo = searchable.getIndicesInfo
 
 // print it
@@ -94,7 +98,7 @@ println(indicesInfo.prettyToString())
 
 Get information about the terms:
 
-```
+```scala
 val termInfo = searchable.getTermCounts
 
 // print top 10 terms for "title" field
@@ -105,7 +109,7 @@ topTenTerms foreach { case (term, count) => println(s"\tterm: $term count: $coun
 
 Or do a query join to find similar pages:
 
-```
+```scala
 // define query generator where we simply use the title and the first few characters of the text as a query
 val queryGenerator: wikipage => DslQuery = (wp) => "text" matchText (wp.title + wp.text.take(200))
 
