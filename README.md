@@ -1,3 +1,5 @@
+[![Gitter chat](https://badges.gitter.im/spark-search.png)](https://gitter.im/spark-search/)
+
 # SearchableRDD for Apache Spark
 #### Big Data search with Spark and Lucene
 
@@ -27,9 +29,9 @@ The scaladoc is available at:
 
 ## How it works
 
-Powered by [Lucene](http://lucene.apache.org/), `spark-search` enables you to run queries on `RDD`s by building Lucene indices for the elements in your input `RDD`s, creating `SearchableRDD`s which you can then execute queries on.
+Powered by [Apache Lucene](http://lucene.apache.org/), `spark-search` enables you to run queries on `RDD`s by building Lucene indices for the elements in your input `RDD`s, creating `SearchableRDD`s which you can then execute queries on.
 
-The elements in the input `RDD` must implement the `Indexable` trait; in the Scala 2.11 build of `spark-search` there is an experimental automatic conversion functionality which allows you to trasparently use you case classes without any work; `spark-search` will automatically add the functionality needed to implement the trait by using reflection and runtime code-generation. See the scaladoc for `it.agilelab.bigdata.spark.search.Indexable` and `it.agilelab.bigdata.spark.search.Indexable.ProductAsIndexable` for further information.
+The elements in the input `RDD` must implement the `Indexable` trait; in the Scala 2.11 build of `spark-search` there is an experimental automatic conversion functionality which allows you to transparently use you case classes without any work; `spark-search` will automatically add the functionality needed to implement the trait by using reflection and runtime code-generation. See the scaladoc for `it.agilelab.bigdata.spark.search.Indexable` and `it.agilelab.bigdata.spark.search.Indexable.ProductAsIndexable` for further information.
 
 Queries can be specified either with the Lucene syntax or with `spark-search`'s own domain specific language; to explore the DSL, check out the scaladoc for the `it.agilelab.bigdata.spark.search.dsl.QueryBuilder` class.
 
