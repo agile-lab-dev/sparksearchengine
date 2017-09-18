@@ -2,6 +2,7 @@ import sbt.Keys._
 
 name := "SparkSearchEngine"
 version := "0.1-SNAPSHOT"
+licenses := Seq(("Apache-2.0", url("http://www.apache.org/licenses/LICENSE-2.0")))
 
 /* scala */
 scalaVersion := "2.10.6" // note: hardcoded scala version in addCompilerPlugin!
@@ -62,3 +63,8 @@ apiMappings ++= {
 /* uber jar */
 assemblyJarName in assembly := "sparksearchengine-all.jar"
 
+/* bintray publishing */
+bintrayOrganization := Some("agile-lab-dev") // organization
+bintrayRepository := "SparkSearchEngine" // target repo
+bintrayPackage := "spark-search" // target package
+bintrayReleaseOnPublish := false // do not automatically release, instead do sbt publish, then sbt bintrayRelease
