@@ -4,12 +4,9 @@ package it.agilelab.bigdata.spark.search.dsl
 import scala.language.implicitConversions
 
 /**
-	* Query DSL grammar:
+	* The main entry point for the Query DSL.
 	*
-	* QUERY =
-	*   bestResult of QUERY
-	*   topResults NUMBER of QUERY
-	*   scoreCutoff NUMBER of QUERY
+	* The grammar for the DSL is as follows:
 	*
 	* QUERY =
 	*   all
@@ -47,43 +44,84 @@ import scala.language.implicitConversions
 	* RANGE = range(FIELDVALUE, FIELDVALUE)
 	*
 	*/
-
-/**
-	* The main entry point for the Query DSL.
-	*/
 case class QueryBuilder(field: field) {
 	// queries ==================================================================
-
+	
+	/**
+		* Build a simple text query.
+		*/
 	def matchText(text: String): MatchTextQuery = MatchTextQuery(field, text)
 	
+	/**
+		* Build a text query requiring all terms to match.
+		*/
 	def matchAllText(text: String): MatchAllTextQuery = MatchAllTextQuery(field, text)
-
+	
+	/**
+		* Build a phrase query.
+		*/
 	def matchPhrase(phrase: String): MatchPhraseQuery = MatchPhraseQuery(field, phrase)
-
+	
+	/**
+		* Build a term query.
+		*/
 	def matchTerm(term: term): MatchTermQuery = MatchTermQuery(field, term)
-
+	
+	/**
+		* Build a term query requiring at least `num` terms to match.
+		*/
 	def matchMin(num: Int): MatchMinQueryExpectsTermSet = MatchMinQueryExpectsTermSet(field, num)
-
+	
+	/**
+		* Build a term query requiring all terms to match.
+		*/
 	def matchAll(termSet: termSet): MatchAllQuery = MatchAllQuery(field, termSet)
-
+	
+	/**
+		* Build a term query requiring at least a term to match.
+		*/
 	def matchAny(termSet: termSet): MatchAnyQuery = MatchAnyQuery(field, termSet)
-
+	
+	/**
+		* Build a query by parsing a query string.
+		*/
 	def parseQuery(query: String): ParsedQuery = ParsedQuery(field, query)
 
 	// filters ==================================================================
-
+	
+	/**
+		* Build an equals filter.
+		*/
 	def eq[T](value: value[T]): EqualToFilter[T] = EqualToFilter(field, value)
-
+	
+	/**
+		* Build a greater than filter.
+		*/
 	def gt[T](value: value[T]): GreaterThanFilter[T] = GreaterThanFilter(field, value)
-
+	
+	/**
+		* Build a greater than or equals to filter.
+		*/
 	def ge[T](value: value[T]): GreaterThanOrEqualToFilter[T] = GreaterThanOrEqualToFilter(field, value)
-
+	
+	/**
+		* Build a lower than filter.
+		*/
 	def lt[T](value: value[T]): LowerThanFilter[T] = LowerThanFilter(field, value)
-
+	
+	/**
+		* Build lower than or equal to filter.
+		*/
 	def le[T](value: value[T]): LowerThanOrEqualToFilter[T] = LowerThanOrEqualToFilter(field, value)
-
+	
+	/**
+		* Build a range filter.
+		*/
 	def in[T](range: range[T]): RangeFilter[T] = RangeFilter(field, range)
-
+	
+	/**
+		* Build a value set filter.
+		*/
 	def in[T](valueSet: valueSet[T]): ValueSetFilter[T] = ValueSetFilter(field, valueSet)
 }
 
@@ -104,13 +142,25 @@ object `package` {
 	implicit def float2floatValue(f: Float): floatValue = floatValue(f)
 
 	implicit def double2doubleValue(d: Double): doubleValue = doubleValue(d)
-
+	
+	/**
+		* Build a query matching all documents.
+		*/
 	def all: AllDocsQuery = new AllDocsQuery()
-
+	
+	/**
+		* Build a query negating the specified one.
+		*/
 	def not(query: DslQuery): NegatedQuery = new NegatedQuery(query)
-
+	
+	/**
+		* Build a query matching all documents which have the specified field.
+		*/
 	def exists(field: field): FieldExistsFilter = FieldExistsFilter(field)
-
+	
+	/**
+		* Build a query matching all documents which do not have the specified field.
+		*/
 	def missing(field: field): FieldMissingFilter = FieldMissingFilter(field)
 }
 
