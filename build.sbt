@@ -5,9 +5,9 @@ version := "0.1-SNAPSHOT"
 licenses := Seq(("Apache-2.0", url("http://www.apache.org/licenses/LICENSE-2.0")))
 
 /* scala */
-scalaVersion := "2.10.6" // note: hardcoded scala version in addCompilerPlugin!
 scalacOptions += "-feature"
 scalacOptions += "-deprecation"
+crossScalaVersions := Seq("2.10.6", "2.11.11")
 
 /* dependencies */
 // spark
@@ -24,9 +24,14 @@ libraryDependencies += "org.apache.lucene" % "lucene-codecs" % luceneVersion
 libraryDependencies += "com.typesafe" % "config" % "1.3.0"
 // macros & quasiquotes
 libraryDependencies += "org.scala-lang" % "scala-reflect" % scalaVersion.value
-libraryDependencies += "org.scalamacros" %% "quasiquotes" % "2.1.0"
+libraryDependencies ++= (
+  if (scalaBinaryVersion.value == "2.10") // add only if scala 2.10; in 2.11 quasiquotes are built-in
+    Seq("org.scalamacros" %% "quasiquotes" % "2.1.0")
+  else
+    Seq[ModuleID]()
+)
 autoCompilerPlugins := true
-addCompilerPlugin("org.scalamacros" % "paradise_2.10.6" % "2.1.0")
+addCompilerPlugin("org.scalamacros" % "paradise" % "2.1.0" cross CrossVersion.full) // use CrossVersion.full so the entire scala version is used in artifact name
 // kryo
 libraryDependencies += "com.esotericsoftware.kryo" % "kryo" % "2.24.0"
 // spark-xml
@@ -34,7 +39,7 @@ libraryDependencies += "com.databricks" %% "spark-xml" % "0.3.2"
 // jsoup
 libraryDependencies += "org.jsoup" % "jsoup" % "1.10.1"
 // elasticsearch
-libraryDependencies += "org.elasticsearch" % "elasticsearch-spark_2.10" % "5.0.0-alpha4" % "provided"
+libraryDependencies += "org.elasticsearch" %% "elasticsearch-spark" % "5.0.0-alpha4" % "provided"
 
 /* scaladoc */
 // configure root documentation
