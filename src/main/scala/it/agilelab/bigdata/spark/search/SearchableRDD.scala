@@ -119,22 +119,21 @@ abstract class SearchableRDD[T](
 	                      maxHitsPerIndex: Int = sameAsMaxHits)
 	                     : Array[(T, Double)]
 
-	/** Like [[aggregatingSearch(query:it\.agilelab\.bigdata\.spark\.search\.Query,maxHits:Int,maxHitsPerIndex:Int)* aggregatingSearch(Query,Int,Int)]],
+	/** Like [[aggregatingSearchWithResultsTransformer(query:it\.agilelab\.bigdata\.spark\.search\.Query,maxHits:Int,maxHitsPerIndex:Int)* aggregatingSearch(Query,Int,Int)]],
 		* but specifying a `transformer` function to be applied to the result elements.
 		*
 		* @group Search
 		*/
-	def aggregatingSearch[V](query: Query,
-	                         maxHits: Int,
-	                         transformer: T => V,
-	                         maxHitsPerIndex: Int = sameAsMaxHits)
-	                        : Array[(V, Double)]
+	def aggregatingSearchWithResultsTransformer[V](query: Query,
+	                                               maxHits: Int,
+	                                               resultsTransformer: T => V,
+	                                               maxHitsPerIndex: Int = sameAsMaxHits)
+	                                       : Array[(V, Double)]
 
-	/** Like [[aggregatingSearch(query:it\.agilelab\.bigdata\.spark\.search\.Query,maxHits:Int,maxHitsPerIndex:Int)* aggregatingSearch(Query,Int,Int)]],
+	/** Like [[aggregatingSearchWithResultsTransformer(query:it\.agilelab\.bigdata\.spark\.search\.Query,maxHits:Int,maxHitsPerIndex:Int)* aggregatingSearch(Query,Int,Int)]],
 		* but returns the ids of the resulting elements.
 		*
 		* @note $ephemeralIDs
-		*
 		* @group Search
 		*/
 	def lightAggregatingSearch(query: Query,
@@ -156,22 +155,21 @@ abstract class SearchableRDD[T](
 	           maxHitsPerIndex: Int = sameAsMaxHits)
 	          : RDD[(T, Double)]
 
-	/** Like [[search(query:it\.agilelab\.bigdata\.spark\.search\.Query,maxHits:Int,maxHitsPerIndex:Int)* search(Query,Int,Int)]],
+	/** Like [[searchWithResultsTransformer(query:it\.agilelab\.bigdata\.spark\.search\.Query,maxHits:Int,maxHitsPerIndex:Int)* search(Query,Int,Int)]],
 	  * but specifying a `transformer` function to be applied to the result elements.
 		*
 		* @group Search
 	  */
-	def search[V](query: DslQuery,
-	              maxHits: Int,
-	              transformer: T => V,
-	              maxHitsPerIndex: Int = sameAsMaxHits)
-	             : RDD[(V, Double)]
+	def searchWithResultsTransformer[V](query: DslQuery,
+	                                    maxHits: Int,
+	                                    resultsTransformer: T => V,
+	                                    maxHitsPerIndex: Int = sameAsMaxHits)
+	                                   : RDD[(V, Double)]
 
-	/** Like [[search(query:it\.agilelab\.bigdata\.spark\.search\.Query,maxHits:Int,maxHitsPerIndex:Int)* search(Query,Int,Int)]],
+	/** Like [[searchWithResultsTransformer(query:it\.agilelab\.bigdata\.spark\.search\.Query,maxHits:Int,maxHitsPerIndex:Int)* search(Query,Int,Int)]],
 	  * but returns the ids of the resulting elements.
 	  *
 	  * @note $ephemeralIDs
-		*
 		* @group Search
 	  */
 	def lightSearch(query: Query,
@@ -198,22 +196,21 @@ abstract class SearchableRDD[T](
 	                maxHitsPerIndex: Int = sameAsMaxHits)
 	               : RDD[(Long, Array[(T, Double)])]
 
-	/** Like [[batchSearch(queries:Iterator[(Long,it\.agilelab\.bigdata\.spark\.search\.dsl\.DslQuery)],maxHits:Int,maxHitsPerIndex:Int)* batchSearch(Iterator[(Long,DslQuery)],Int,Int)]],
+	/** Like [[batchSearchWithResultsTransformer(queries:Iterator[(Long,it\.agilelab\.bigdata\.spark\.search\.dsl\.DslQuery)],maxHits:Int,maxHitsPerIndex:Int)* batchSearch(Iterator[(Long,DslQuery)],Int,Int)]],
 	  * but specifying a `transformer` function to be applied to the result elements.
 		*
 		* @group Search
 	  */
-	def batchSearch[V](queries: Iterator[(Long, DslQuery)],
-	                   maxHits: Int,
-	                   transformer: T => V,
-	                   maxHitsPerIndex: Int = sameAsMaxHits)
-	                  : RDD[(Long, Array[(V, Double)])]
+	def batchSearchWithResultsTransformer[V](queries: Iterator[(Long, DslQuery)],
+	                                         maxHits: Int,
+	                                         resultsTransformer: T => V,
+	                                         maxHitsPerIndex: Int = sameAsMaxHits)
+	                                        : RDD[(Long, Array[(V, Double)])]
 
-	/** Like [[batchSearch(queries:Iterator[(Long,it\.agilelab\.bigdata\.spark\.search\.dsl\.DslQuery)],maxHits:Int,maxHitsPerIndex:Int)* batchSearch(Iterator[(Long,DslQuery)],Int,Int)]],
+	/** Like [[batchSearchWithResultsTransformer(queries:Iterator[(Long,it\.agilelab\.bigdata\.spark\.search\.dsl\.DslQuery)],maxHits:Int,maxHitsPerIndex:Int)* batchSearch(Iterator[(Long,DslQuery)],Int,Int)]],
 	  * but returns the ids of the resulting elements.
 	  *
 	  * @note $ephemeralIDs
-		*
 		* @group Search
 	  */
 	def lightBatchSearch(queries: Iterator[(Long, DslQuery)],
@@ -221,7 +218,7 @@ abstract class SearchableRDD[T](
 	                     maxHitsPerIndex: Int = sameAsMaxHits)
 	                    : RDD[(Long, Array[(Long, Double)])]
 
-	/** Like [[batchSearch(queries:Iterator[(Long,it\.agilelab\.bigdata\.spark\.search\.dsl\.DslQuery)],maxHits:Int,maxHitsPerIndex:Int)* batchSearch(Iterator[(Long,DslQuery)],Int,Int)]],
+	/** Like [[batchSearchWithResultsTransformer(queries:Iterator[(Long,it\.agilelab\.bigdata\.spark\.search\.dsl\.DslQuery)],maxHits:Int,maxHitsPerIndex:Int)* batchSearch(Iterator[(Long,DslQuery)],Int,Int)]],
 	  * but uses [[RawQuery]] type queries instead of [[dsl.DslQuery]].
 		*
 		* @group Search
@@ -231,16 +228,16 @@ abstract class SearchableRDD[T](
 	                   maxHitsPerIndex: Int = sameAsMaxHits)
 	                  : RDD[(Long, Array[(T, Double)])]
 
-	/** Like [[batchSearch[V](queries:Iterator[(Long,it\.agilelab\.bigdata\.spark\.search\.dsl\.DslQuery)],maxHits:Int,transformer:T=>V,maxHitsPerIndex:Int)* batchSearch(Iterator[(Long,DslQuery)],Int,T=>V,Int)]],
+	/** Like [[batchSearchWithResultsTransformer[V](queries:Iterator[(Long,it\.agilelab\.bigdata\.spark\.search\.dsl\.DslQuery)],maxHits:Int,transformer:T=>V,maxHitsPerIndex:Int)* batchSearch(Iterator[(Long,DslQuery)],Int,T=>V,Int)]],
 	  * but uses [[RawQuery]] type queries instead of [[dsl.DslQuery]].
 		*
 		* @group Search
 	  */
-	def batchSearchRaw[V](queries: Iterator[(Long, RawQuery)],
-	                      maxHits: Int,
-	                      transformer: T => V,
-	                      maxHitsPerIndex: Int = sameAsMaxHits)
-	                     : RDD[(Long, Array[(V, Double)])]
+	def batchSearchRawWithResultsTransformer[V](queries: Iterator[(Long, RawQuery)],
+	                                            maxHits: Int,
+	                                            resultsTransformer: T => V,
+	                                            maxHitsPerIndex: Int = sameAsMaxHits)
+	                                           : RDD[(Long, Array[(V, Double)])]
 
 	/** Like [[lightBatchSearch(queries:Iterator[(Long,it\.agilelab\.bigdata\.spark\.search\.dsl\.DslQuery)],maxHits:Int,maxHitsPerIndex:Int)* lightBatchSearch(Iterator[(Long,DslQuery)],Int,Int)]],
 	  * but uses [[RawQuery]] type queries instead of [[dsl.DslQuery]].
@@ -252,7 +249,7 @@ abstract class SearchableRDD[T](
 	                        maxHitsPerIndex: Int = sameAsMaxHits)
 	                       : RDD[(Long, Array[(Long, Double)])]
 
-	/** Like [[queryJoin[U](other:org\.apache\.spark\.rdd\.RDD[U],queryGenerator:U=>it\.agilelab\.bigdata\.spark\.search\.dsl\.DslQuery,maxHits:Int)* queryJoin[U](RDD[U],U=>DslQuery,Int)]],
+	/** Like [[queryJoinWithResultsTransformer[U](other:org\.apache\.spark\.rdd\.RDD[U],queryGenerator:U=>it\.agilelab\.bigdata\.spark\.search\.dsl\.DslQuery,maxHits:Int)* queryJoin[U](RDD[U],U=>DslQuery,Int)]],
 	  * but with `this` as the `other` RDD; that is, a query self join.
 		*
 		* @group QueryJoin
@@ -271,19 +268,19 @@ abstract class SearchableRDD[T](
 	  */
 	def queryJoin[U: ClassTag](other: RDD[U], queryGenerator: U => DslQuery, maxHits: Int): RDD[(U, Array[(T, Double)])]
 
-	/** Like [[queryJoin[U,V](other:org\.apache\.spark\.rdd\.RDD[U],queryGenerator:U=>it\.agilelab\.bigdata\.spark\.search\.dsl\.DslQuery,maxHits:Int,transformer:T=>V)* queryJoin[U,V](RDD[U],U=>DslQuery,Int,T=>V)]],
+	/** Like [[queryJoinWithResultsTransformer[U,V](other:org\.apache\.spark\.rdd\.RDD[U],queryGenerator:U=>it\.agilelab\.bigdata\.spark\.search\.dsl\.DslQuery,maxHits:Int,transformer:T=>V)* queryJoin[U,V](RDD[U],U=>DslQuery,Int,T=>V)]],
 	  * but with `this` as the `other` RDD; that is, a query self join.
 		*
 		* @group QueryJoin
 	  */
-	def queryJoin[V: ClassTag](queryGenerator: T => DslQuery, maxHits: Int, transformer: T => V): RDD[(T, Array[(V, Double)])] = queryJoin(this, queryGenerator, maxHits, transformer)
+	def queryJoinWithResultsTransformer[V: ClassTag](queryGenerator: T => DslQuery, maxHits: Int, resultsTransformer: T => V): RDD[(T, Array[(V, Double)])] = queryJoinWithResultsTransformer(this, queryGenerator, maxHits, resultsTransformer)
 
-	/** Like [[queryJoin[U](other:org\.apache\.spark\.rdd\.RDD[U],queryGenerator:U=>it\.agilelab\.bigdata\.spark\.search\.dsl\.DslQuery,maxHits:Int)* queryJoin[U](RDD[U],U=>DslQuery,Int)]],
+	/** Like [[queryJoinWithResultsTransformer[U](other:org\.apache\.spark\.rdd\.RDD[U],queryGenerator:U=>it\.agilelab\.bigdata\.spark\.search\.dsl\.DslQuery,maxHits:Int)* queryJoin[U](RDD[U],U=>DslQuery,Int)]],
 	  * but specifying a `transformer` function to be applied to the result elements.
 		*
 		* @group QueryJoin
 	  */
-	def queryJoin[U: ClassTag, V: ClassTag](other: RDD[U], queryGenerator: U => DslQuery, maxHits: Int, transformer: T => V): RDD[(U, Array[(V, Double)])]
+	def queryJoinWithResultsTransformer[U: ClassTag, V: ClassTag](other: RDD[U], queryGenerator: U => DslQuery, maxHits: Int, resultsTransformer: T => V): RDD[(U, Array[(V, Double)])]
 
 	/** Like [[lightQueryJoin[U](other:org\.apache\.spark\.rdd\.RDD[U],queryGenerator:U=>it\.agilelab\.bigdata\.spark\.search\.dsl\.DslQuery,maxHits:Int)* lightQueryJoin[U](RDD[U],U=>DslQuery,Int)]],
 	  * but with `this` as the `other` RDD; that is, a query self join.
@@ -292,11 +289,10 @@ abstract class SearchableRDD[T](
 	  */
 	def lightQueryJoin(queryGenerator: T => DslQuery, maxHits: Int): RDD[(T, Array[(Long, Double)])] = lightQueryJoin(this, queryGenerator, maxHits)
 
-	/** Like [[queryJoin[U](other:org\.apache\.spark\.rdd\.RDD[U],queryGenerator:U=>it\.agilelab\.bigdata\.spark\.search\.dsl\.DslQuery,maxHits:Int)* queryJoin[U](RDD[U],U=>DslQuery,Int)]],
+	/** Like [[queryJoinWithResultsTransformer[U](other:org\.apache\.spark\.rdd\.RDD[U],queryGenerator:U=>it\.agilelab\.bigdata\.spark\.search\.dsl\.DslQuery,maxHits:Int)* queryJoin[U](RDD[U],U=>DslQuery,Int)]],
 	  * but returns the ids of the resulting elements.
 	  *
 	  * @note $ephemeralIDs
-		*
 		* @group QueryJoin
 	  */
 	def lightQueryJoin[U: ClassTag](other: RDD[U], queryGenerator: U => DslQuery, maxHits: Int): RDD[(U, Array[(Long, Double)])]

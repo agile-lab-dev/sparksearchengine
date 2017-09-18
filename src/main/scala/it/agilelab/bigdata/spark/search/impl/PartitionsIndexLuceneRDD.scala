@@ -60,26 +60,25 @@ class PartitionsIndexLuceneRDD[T] private[search](
 		aggregateResults(results, maxHits)
 	}
 	
-	/** Like [[aggregatingSearch(query:it\.agilelab\.bigdata\.spark\.search\.Query,maxHits:Int,maxHitsPerIndex:Int)* aggregatingSearch(Query,Int,Int)]],
+	/** Like [[aggregatingSearchWithResultsTransformer(query:it\.agilelab\.bigdata\.spark\.search\.Query,maxHits:Int,maxHitsPerIndex:Int)* aggregatingSearch(Query,Int,Int)]],
 		* but specifying a `transformer` function to be applied to the result elements.
 		*
 		* @group Search
 		*/
-	override def aggregatingSearch[V](query: Query,
-	                         maxHits: Int,
-	                         transformer: T => V,
-	                         maxHitsPerIndex: Int = sameAsMaxHits)
+	override def aggregatingSearchWithResultsTransformer[V](query: Query,
+	                                                        maxHits: Int,
+	                                                        resultsTransformer: T => V,
+	                                                        maxHitsPerIndex: Int = sameAsMaxHits)
 	: Array[(V, Double)] = {
 		val maxHitsPerIndexActual = getMHPIActual(maxHitsPerIndex, maxHits)
 		val results = getIndexedPartitionsRDD.map(_.search(query, maxHitsPerIndexActual, transformer))
 		aggregateResults(results, maxHits)
 	}
 	
-	/** Like [[aggregatingSearch(query:it\.agilelab\.bigdata\.spark\.search\.Query,maxHits:Int,maxHitsPerIndex:Int)* aggregatingSearch(Query,Int,Int)]],
+	/** Like [[aggregatingSearchWithResultsTransformer(query:it\.agilelab\.bigdata\.spark\.search\.Query,maxHits:Int,maxHitsPerIndex:Int)* aggregatingSearch(Query,Int,Int)]],
 		* but returns the ids of the resulting elements.
 		*
 		* @note $ephemeralIDs
-		*
 		* @group Search
 		*/
 	override def lightAggregatingSearch(query: Query,
@@ -127,26 +126,25 @@ class PartitionsIndexLuceneRDD[T] private[search](
 		sortResults(results, maxHits)
 	}
 	
-	/** Like [[search(query:it\.agilelab\.bigdata\.spark\.search\.Query,maxHits:Int,maxHitsPerIndex:Int)* search(Query,Int,Int)]],
+	/** Like [[searchWithResultsTransformer(query:it\.agilelab\.bigdata\.spark\.search\.Query,maxHits:Int,maxHitsPerIndex:Int)* search(Query,Int,Int)]],
 		* but specifying a `transformer` function to be applied to the result elements.
 		*
 		* @group Search
 		*/
-	override def search[V](query: DslQuery,
-	              maxHits: Int,
-	              transformer: T => V,
-	              maxHitsPerIndex: Int = sameAsMaxHits)
+	override def searchWithResultsTransformer[V](query: DslQuery,
+	                                             maxHits: Int,
+	                                             resultsTransformer: T => V,
+	                                             maxHitsPerIndex: Int = sameAsMaxHits)
 	: RDD[(V, Double)] = {
 		val maxHitsPerIndexActual = getMHPIActual(maxHitsPerIndex, maxHits)
 		val results = getIndexedPartitionsRDD.flatMap(_.search(query, maxHitsPerIndexActual, transformer))
 		sortResults(results, maxHits)
 	}
 	
-	/** Like [[search(query:it\.agilelab\.bigdata\.spark\.search\.Query,maxHits:Int,maxHitsPerIndex:Int)* search(Query,Int,Int)]],
+	/** Like [[searchWithResultsTransformer(query:it\.agilelab\.bigdata\.spark\.search\.Query,maxHits:Int,maxHitsPerIndex:Int)* search(Query,Int,Int)]],
 		* but returns the ids of the resulting elements.
 		*
 		* @note $ephemeralIDs
-		*
 		* @group Search
 		*/
 	override def lightSearch(query: Query,
@@ -181,26 +179,25 @@ class PartitionsIndexLuceneRDD[T] private[search](
 		aggregateResultsByKey(results, maxHits)
 	}
 	
-	/** Like [[batchSearch(queries:Iterator[(Long,it\.agilelab\.bigdata\.spark\.search\.dsl\.DslQuery)],maxHits:Int,maxHitsPerIndex:Int)* batchSearch(Iterator[(Long,DslQuery)],Int,Int)]],
+	/** Like [[batchSearchWithResultsTransformer(queries:Iterator[(Long,it\.agilelab\.bigdata\.spark\.search\.dsl\.DslQuery)],maxHits:Int,maxHitsPerIndex:Int)* batchSearch(Iterator[(Long,DslQuery)],Int,Int)]],
 		* but specifying a `transformer` function to be applied to the result elements.
 		*
 		* @group Search
 		*/
-	override def batchSearch[V](queries: Iterator[(Long, DslQuery)],
-	                   maxHits: Int,
-	                   transformer: T => V,
-	                   maxHitsPerIndex: Int = sameAsMaxHits)
+	override def batchSearchWithResultsTransformer[V](queries: Iterator[(Long, DslQuery)],
+	                                                  maxHits: Int,
+	                                                  resultsTransformer: T => V,
+	                                                  maxHitsPerIndex: Int = sameAsMaxHits)
 	: RDD[(Long, Array[(V, Double)])] = {
 		val maxHitsPerIndexActual = getMHPIActual(maxHitsPerIndex, maxHits)
 		val results = getIndexedPartitionsRDD.flatMap(_.batchSearch(queries, maxHitsPerIndexActual, transformer))
 		aggregateResultsByKey(results, maxHits)
 	}
 	
-	/** Like [[batchSearch(queries:Iterator[(Long,it\.agilelab\.bigdata\.spark\.search\.dsl\.DslQuery)],maxHits:Int,maxHitsPerIndex:Int)* batchSearch(Iterator[(Long,DslQuery)],Int,Int)]],
+	/** Like [[batchSearchWithResultsTransformer(queries:Iterator[(Long,it\.agilelab\.bigdata\.spark\.search\.dsl\.DslQuery)],maxHits:Int,maxHitsPerIndex:Int)* batchSearch(Iterator[(Long,DslQuery)],Int,Int)]],
 		* but returns the ids of the resulting elements.
 		*
 		* @note $ephemeralIDs
-		*
 		* @group Search
 		*/
 	override def lightBatchSearch(queries: Iterator[(Long, DslQuery)],
@@ -212,7 +209,7 @@ class PartitionsIndexLuceneRDD[T] private[search](
 		aggregateResultsByKey(results, maxHits)
 	}
 	
-	/** Like [[batchSearch(queries:Iterator[(Long,it\.agilelab\.bigdata\.spark\.search\.dsl\.DslQuery)],maxHits:Int,maxHitsPerIndex:Int)* batchSearch(Iterator[(Long,DslQuery)],Int,Int)]],
+	/** Like [[batchSearchWithResultsTransformer(queries:Iterator[(Long,it\.agilelab\.bigdata\.spark\.search\.dsl\.DslQuery)],maxHits:Int,maxHitsPerIndex:Int)* batchSearch(Iterator[(Long,DslQuery)],Int,Int)]],
 		* but uses [[RawQuery]] type queries instead of [[dsl.DslQuery]].
 		*
 		* @group Search
@@ -226,15 +223,15 @@ class PartitionsIndexLuceneRDD[T] private[search](
 		aggregateResultsByKey(results, maxHits)
 	}
 	
-	/** Like [[batchSearch[V](queries:Iterator[(Long,it\.agilelab\.bigdata\.spark\.search\.dsl\.DslQuery)],maxHits:Int,transformer:T=>V,maxHitsPerIndex:Int)* batchSearch(Iterator[(Long,DslQuery)],Int,T=>V,Int)]],
+	/** Like [[batchSearchWithResultsTransformer[V](queries:Iterator[(Long,it\.agilelab\.bigdata\.spark\.search\.dsl\.DslQuery)],maxHits:Int,transformer:T=>V,maxHitsPerIndex:Int)* batchSearch(Iterator[(Long,DslQuery)],Int,T=>V,Int)]],
 		* but uses [[RawQuery]] type queries instead of [[dsl.DslQuery]].
 		*
 		* @group Search
 		*/
-	override def batchSearchRaw[V](queries: Iterator[(Long, RawQuery)],
-	                      maxHits: Int,
-	                      transformer: T => V,
-	                      maxHitsPerIndex: Int = sameAsMaxHits)
+	override def batchSearchRawWithResultsTransformer[V](queries: Iterator[(Long, RawQuery)],
+	                                                     maxHits: Int,
+	                                                     resultsTransformer: T => V,
+	                                                     maxHitsPerIndex: Int = sameAsMaxHits)
 	: RDD[(Long, Array[(V, Double)])] = {
 		val maxHitsPerIndexActual = getMHPIActual(maxHitsPerIndex, maxHits)
 		val results = getIndexedPartitionsRDD.flatMap(_.batchSearchRaw(queries, maxHitsPerIndexActual, transformer))
@@ -287,12 +284,12 @@ class PartitionsIndexLuceneRDD[T] private[search](
 		combined
 	}
 	
-	/** Like [[queryJoin[U](other:org\.apache\.spark\.rdd\.RDD[U],queryGenerator:U=>it\.agilelab\.bigdata\.spark\.search\.dsl\.DslQuery,maxHits:Int)* queryJoin[U](RDD[U],U=>DslQuery,Int)]],
+	/** Like [[queryJoinWithResultsTransformer[U](other:org\.apache\.spark\.rdd\.RDD[U],queryGenerator:U=>it\.agilelab\.bigdata\.spark\.search\.dsl\.DslQuery,maxHits:Int)* queryJoin[U](RDD[U],U=>DslQuery,Int)]],
 		* but specifying a `transformer` function to be applied to the result elements.
 		*
 		* @group QueryJoin
 		*/
-	override def queryJoin[U: ClassTag, V: ClassTag](other: RDD[U], queryGenerator: U => DslQuery, maxHits: Int, transformer: T => V): RDD[(U, Array[(V, Double)])] = {
+	override def queryJoinWithResultsTransformer[U: ClassTag, V: ClassTag](other: RDD[U], queryGenerator: U => DslQuery, maxHits: Int, resultsTransformer: T => V): RDD[(U, Array[(V, Double)])] = {
 		// assign id to elements
 		val elementsWithId = other.zipWithUniqueId().map(_.swap)
 		
@@ -314,11 +311,10 @@ class PartitionsIndexLuceneRDD[T] private[search](
 		combined
 	}
 	
-	/** Like [[queryJoin[U](other:org\.apache\.spark\.rdd\.RDD[U],queryGenerator:U=>it\.agilelab\.bigdata\.spark\.search\.dsl\.DslQuery,maxHits:Int)* queryJoin[U](RDD[U],U=>DslQuery,Int)]],
+	/** Like [[queryJoinWithResultsTransformer[U](other:org\.apache\.spark\.rdd\.RDD[U],queryGenerator:U=>it\.agilelab\.bigdata\.spark\.search\.dsl\.DslQuery,maxHits:Int)* queryJoin[U](RDD[U],U=>DslQuery,Int)]],
 		* but returns the ids of the resulting elements.
 		*
 		* @note $ephemeralIDs
-		*
 		* @group QueryJoin
 		*/
 	override def lightQueryJoin[U: ClassTag](other: RDD[U], queryGenerator: U => DslQuery, maxHits: Int): RDD[(U, Array[(Long, Double)])] = {
