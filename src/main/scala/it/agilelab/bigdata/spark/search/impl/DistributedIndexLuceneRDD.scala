@@ -51,7 +51,7 @@ class DistributedIndexLuceneRDD[T] private[search] (val indexRDD: RDD[LuceneInde
 	}
 	
 	/** Like [[aggregatingSearchWithResultsTransformer(query:it\.agilelab\.bigdata\.spark\.search\.Query,maxHits:Int,maxHitsPerIndex:Int)* aggregatingSearch(Query,Int,Int)]],
-		* but specifying a `transformer` function to be applied to the result elements.
+		* but specifying a `resultsTransformer` function to be applied to the result elements.
 		*
 		* @group Search
 		*/
@@ -59,7 +59,7 @@ class DistributedIndexLuceneRDD[T] private[search] (val indexRDD: RDD[LuceneInde
 		val maxHitsPerIndexActual = getMHPIActual(maxHitsPerIndex, maxHits)
 		val results = indexRDD.map(_.searchAny(query, maxHitsPerIndexActual))
 		val flattenedResults = results.flatMap(identity)
-		val resultsJoinedWithElements = flattenedResults.join(elementsRDD).map { case (elementId, (score, element)) => (transformer(element), score) }
+		val resultsJoinedWithElements = flattenedResults.join(elementsRDD).map { case (elementId, (score, element)) => (resultsTransformer(element), score) }
 		val groupedResults = resultsJoinedWithElements.mapPartitions(it => Iterator(it))
 		aggregateResults(groupedResults, maxHits)
 	}
@@ -111,7 +111,7 @@ class DistributedIndexLuceneRDD[T] private[search] (val indexRDD: RDD[LuceneInde
 	}
 	
 	/** Like [[searchWithResultsTransformer(query:it\.agilelab\.bigdata\.spark\.search\.Query,maxHits:Int,maxHitsPerIndex:Int)* search(Query,Int,Int)]],
-		* but specifying a `transformer` function to be applied to the result elements.
+		* but specifying a `resultsTransformer` function to be applied to the result elements.
 		*
 		* @group Search
 		*/
@@ -120,7 +120,7 @@ class DistributedIndexLuceneRDD[T] private[search] (val indexRDD: RDD[LuceneInde
 		val results = indexRDD.flatMap(index => index.searchAny(query, mhpiActual))
 		val sortedResults = sortResults(results, maxHits)
 		sortedResults.join(elementsRDD)
-			.map { case (_, (score, element)) => (transformer(element), score)}
+			.map { case (_, (score, element)) => (resultsTransformer(element), score)}
 	}
 	
 	/** Like [[searchWithResultsTransformer(query:it\.agilelab\.bigdata\.spark\.search\.Query,maxHits:Int,maxHitsPerIndex:Int)* search(Query,Int,Int)]],
@@ -164,7 +164,7 @@ class DistributedIndexLuceneRDD[T] private[search] (val indexRDD: RDD[LuceneInde
 	}
 	
 	/** Like [[batchSearchWithResultsTransformer(queries:Iterator[(Long,it\.agilelab\.bigdata\.spark\.search\.dsl\.DslQuery)],maxHits:Int,maxHitsPerIndex:Int)* batchSearch(Iterator[(Long,DslQuery)],Int,Int)]],
-		* but specifying a `transformer` function to be applied to the result elements.
+		* but specifying a `resultsTransformer` function to be applied to the result elements.
 		*
 		* @group Search
 		*/
@@ -174,7 +174,7 @@ class DistributedIndexLuceneRDD[T] private[search] (val indexRDD: RDD[LuceneInde
 		val flattenedResults = results flatMap { case (query, queryResults) => queryResults map { case (elementId, score) => (elementId, (score, query)) } }
 		val resultsJoinedWithElements = flattenedResults.join(elementsRDD)
 		val groupedResults = resultsJoinedWithElements map {
-			case (elementId, ((score, query), element)) => (query, (transformer(element), score))
+			case (elementId, ((score, query), element)) => (query, (resultsTransformer(element), score))
 		} groupByKey()
 		val sortedLimitedArrayResults = groupedResults map {
 			case (query, queryResults) =>
@@ -217,7 +217,7 @@ class DistributedIndexLuceneRDD[T] private[search] (val indexRDD: RDD[LuceneInde
 		sortedLimitedArrayResults
 	}
 	
-	/** Like [[batchSearchWithResultsTransformer[V](queries:Iterator[(Long,it\.agilelab\.bigdata\.spark\.search\.dsl\.DslQuery)],maxHits:Int,transformer:T=>V,maxHitsPerIndex:Int)* batchSearch(Iterator[(Long,DslQuery)],Int,T=>V,Int)]],
+	/** Like [[batchSearchWithResultsTransformer[V](queries:Iterator[(Long,it\.agilelab\.bigdata\.spark\.search\.dsl\.DslQuery)],maxHits:Int,resultsTransformer:T=>V,maxHitsPerIndex:Int)* batchSearch(Iterator[(Long,DslQuery)],Int,T=>V,Int)]],
 		* but uses [[RawQuery]] type queries instead of [[dsl.DslQuery]].
 		*
 		* @group Search
@@ -228,7 +228,7 @@ class DistributedIndexLuceneRDD[T] private[search] (val indexRDD: RDD[LuceneInde
 		val flattenedResults = results flatMap { case (query, queryResults) => queryResults map { case (elementId, score) => (elementId, (score, query)) } }
 		val resultsJoinedWithElements = flattenedResults.join(elementsRDD)
 		val groupedResults = resultsJoinedWithElements map {
-			case (elementId, ((score, query), element)) => (query, (transformer(element), score))
+			case (elementId, ((score, query), element)) => (query, (resultsTransformer(element), score))
 		} groupByKey()
 		val sortedLimitedArrayResults = groupedResults map {
 			case (query, queryResults) =>
@@ -293,7 +293,7 @@ class DistributedIndexLuceneRDD[T] private[search] (val indexRDD: RDD[LuceneInde
 	}
 	
 	/** Like [[queryJoinWithResultsTransformer[U](other:org\.apache\.spark\.rdd\.RDD[U],queryGenerator:U=>it\.agilelab\.bigdata\.spark\.search\.dsl\.DslQuery,maxHits:Int)* queryJoin[U](RDD[U],U=>DslQuery,Int)]],
-		* but specifying a `transformer` function to be applied to the result elements.
+		* but specifying a `resultsTransformer` function to be applied to the result elements.
 		*
 		* @group QueryJoin
 		*/
@@ -315,7 +315,7 @@ class DistributedIndexLuceneRDD[T] private[search] (val indexRDD: RDD[LuceneInde
 		val flattenedResults = results flatMap { case (query, queryResults) => queryResults map { case (elementId, score) => (elementId, (score, query)) } }
 		val resultsJoinedWithElements = flattenedResults.join(elementsRDD)
 		val groupedResults = resultsJoinedWithElements map {
-			case (elementId, ((score, query), element)) => (query, (transformer(element), score))
+			case (elementId, ((score, query), element)) => (query, (resultsTransformer(element), score))
 		} groupByKey()
 		
 		// process results

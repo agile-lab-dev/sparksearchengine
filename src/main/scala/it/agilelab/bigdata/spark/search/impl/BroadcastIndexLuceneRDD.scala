@@ -67,7 +67,7 @@ class BroadcastIndexLuceneRDD[T] private[search] (
 	}
 	
 	/** Like [[aggregatingSearchWithResultsTransformer(query:it\.agilelab\.bigdata\.spark\.search\.Query,maxHits:Int,maxHitsPerIndex:Int)* aggregatingSearch(Query,Int,Int)]],
-		* but specifying a `transformer` function to be applied to the result elements.
+		* but specifying a `resultsTransformer` function to be applied to the result elements.
 		*
 		* @group Search
 		*/
@@ -87,7 +87,7 @@ class BroadcastIndexLuceneRDD[T] private[search] (
 				resultsInThisPartition map {
 					case (elementId, score) =>
 						val elementIndex = (elementId / numPartitions).toInt // cast is safe thanks to elementId's construction
-						(transformer(elements(elementIndex)), score)
+						(resultsTransformer(elements(elementIndex)), score)
 				}
 		}
 		val iteratorResults = results.mapPartitions(it => Iterator(it))
@@ -153,7 +153,7 @@ class BroadcastIndexLuceneRDD[T] private[search] (
 	}
 	
 	/** Like [[searchWithResultsTransformer(query:it\.agilelab\.bigdata\.spark\.search\.Query,maxHits:Int,maxHitsPerIndex:Int)* search(Query,Int,Int)]],
-		* but specifying a `transformer` function to be applied to the result elements.
+		* but specifying a `resultsTransformer` function to be applied to the result elements.
 		*
 		* @group Search
 		*/
@@ -173,7 +173,7 @@ class BroadcastIndexLuceneRDD[T] private[search] (
 				resultsInThisPartition map {
 					case (elementId, score) =>
 						val elementIndex = (elementId / numPartitions).toInt // cast is safe thanks to elementId's construction
-						(transformer(elements(elementIndex)), score)
+						(resultsTransformer(elements(elementIndex)), score)
 				}
 		}
 		sortResults(results, maxHits)
@@ -255,7 +255,7 @@ class BroadcastIndexLuceneRDD[T] private[search] (
 	}
 	
 	/** Like [[batchSearchWithResultsTransformer(queries:Iterator[(Long,it\.agilelab\.bigdata\.spark\.search\.dsl\.DslQuery)],maxHits:Int,maxHitsPerIndex:Int)* batchSearch(Iterator[(Long,DslQuery)],Int,Int)]],
-		* but specifying a `transformer` function to be applied to the result elements.
+		* but specifying a `resultsTransformer` function to be applied to the result elements.
 		*
 		* @group Search
 		*/
@@ -284,7 +284,7 @@ class BroadcastIndexLuceneRDD[T] private[search] (
 						val queryElementResults = queryResults map {
 							case (elementId, score) =>
 								val elementIndex = (elementId / numPartitions).toInt // cast is safe thanks to elementId's construction
-								(transformer(elements(elementIndex)), score)
+								(resultsTransformer(elements(elementIndex)), score)
 						}
 						
 						(queryId, queryElementResults)
@@ -366,7 +366,7 @@ class BroadcastIndexLuceneRDD[T] private[search] (
 		aggregateResultsByKey(results, maxHits)
 	}
 	
-	/** Like [[batchSearchWithResultsTransformer[V](queries:Iterator[(Long,it\.agilelab\.bigdata\.spark\.search\.dsl\.DslQuery)],maxHits:Int,transformer:T=>V,maxHitsPerIndex:Int)* batchSearch(Iterator[(Long,DslQuery)],Int,T=>V,Int)]],
+	/** Like [[batchSearchWithResultsTransformer[V](queries:Iterator[(Long,it\.agilelab\.bigdata\.spark\.search\.dsl\.DslQuery)],maxHits:Int,resultsTransformer:T=>V,maxHitsPerIndex:Int)* batchSearch(Iterator[(Long,DslQuery)],Int,T=>V,Int)]],
 		* but uses [[RawQuery]] type queries instead of [[dsl.DslQuery]].
 		*
 		* @group Search
@@ -396,7 +396,7 @@ class BroadcastIndexLuceneRDD[T] private[search] (
 						val queryElementResults = queryResults map {
 							case (elementId, score) =>
 								val elementIndex = (elementId / numPartitions).toInt // cast is safe thanks to elementId's construction
-								(transformer(elements(elementIndex)), score)
+								(resultsTransformer(elements(elementIndex)), score)
 						}
 						
 						(queryId, queryElementResults)
@@ -449,7 +449,7 @@ class BroadcastIndexLuceneRDD[T] private[search] (
 	override def queryJoin[U: ClassManifest](other: RDD[U], queryGenerator: (U) => DslQuery, maxHits: Int): RDD[(U, Array[(T, Double)])] = ???
 	
 	/** Like [[queryJoinWithResultsTransformer[U](other:org\.apache\.spark\.rdd\.RDD[U],queryGenerator:U=>it\.agilelab\.bigdata\.spark\.search\.dsl\.DslQuery,maxHits:Int)* queryJoin[U](RDD[U],U=>DslQuery,Int)]],
-		* but specifying a `transformer` function to be applied to the result elements.
+		* but specifying a `resultsTransformer` function to be applied to the result elements.
 		*
 		* @group QueryJoin
 		*/

@@ -61,7 +61,7 @@ class PartitionsIndexLuceneRDD[T] private[search](
 	}
 	
 	/** Like [[aggregatingSearchWithResultsTransformer(query:it\.agilelab\.bigdata\.spark\.search\.Query,maxHits:Int,maxHitsPerIndex:Int)* aggregatingSearch(Query,Int,Int)]],
-		* but specifying a `transformer` function to be applied to the result elements.
+		* but specifying a `resultsTransformer` function to be applied to the result elements.
 		*
 		* @group Search
 		*/
@@ -71,7 +71,7 @@ class PartitionsIndexLuceneRDD[T] private[search](
 	                                                        maxHitsPerIndex: Int = sameAsMaxHits)
 	: Array[(V, Double)] = {
 		val maxHitsPerIndexActual = getMHPIActual(maxHitsPerIndex, maxHits)
-		val results = getIndexedPartitionsRDD.map(_.search(query, maxHitsPerIndexActual, transformer))
+		val results = getIndexedPartitionsRDD.map(_.search(query, maxHitsPerIndexActual, resultsTransformer))
 		aggregateResults(results, maxHits)
 	}
 	
@@ -127,7 +127,7 @@ class PartitionsIndexLuceneRDD[T] private[search](
 	}
 	
 	/** Like [[searchWithResultsTransformer(query:it\.agilelab\.bigdata\.spark\.search\.Query,maxHits:Int,maxHitsPerIndex:Int)* search(Query,Int,Int)]],
-		* but specifying a `transformer` function to be applied to the result elements.
+		* but specifying a `resultsTransformer` function to be applied to the result elements.
 		*
 		* @group Search
 		*/
@@ -137,7 +137,7 @@ class PartitionsIndexLuceneRDD[T] private[search](
 	                                             maxHitsPerIndex: Int = sameAsMaxHits)
 	: RDD[(V, Double)] = {
 		val maxHitsPerIndexActual = getMHPIActual(maxHitsPerIndex, maxHits)
-		val results = getIndexedPartitionsRDD.flatMap(_.search(query, maxHitsPerIndexActual, transformer))
+		val results = getIndexedPartitionsRDD.flatMap(_.search(query, maxHitsPerIndexActual, resultsTransformer))
 		sortResults(results, maxHits)
 	}
 	
@@ -180,7 +180,7 @@ class PartitionsIndexLuceneRDD[T] private[search](
 	}
 	
 	/** Like [[batchSearchWithResultsTransformer(queries:Iterator[(Long,it\.agilelab\.bigdata\.spark\.search\.dsl\.DslQuery)],maxHits:Int,maxHitsPerIndex:Int)* batchSearch(Iterator[(Long,DslQuery)],Int,Int)]],
-		* but specifying a `transformer` function to be applied to the result elements.
+		* but specifying a `resultsTransformer` function to be applied to the result elements.
 		*
 		* @group Search
 		*/
@@ -190,7 +190,7 @@ class PartitionsIndexLuceneRDD[T] private[search](
 	                                                  maxHitsPerIndex: Int = sameAsMaxHits)
 	: RDD[(Long, Array[(V, Double)])] = {
 		val maxHitsPerIndexActual = getMHPIActual(maxHitsPerIndex, maxHits)
-		val results = getIndexedPartitionsRDD.flatMap(_.batchSearch(queries, maxHitsPerIndexActual, transformer))
+		val results = getIndexedPartitionsRDD.flatMap(_.batchSearch(queries, maxHitsPerIndexActual, resultsTransformer))
 		aggregateResultsByKey(results, maxHits)
 	}
 	
@@ -223,7 +223,7 @@ class PartitionsIndexLuceneRDD[T] private[search](
 		aggregateResultsByKey(results, maxHits)
 	}
 	
-	/** Like [[batchSearchWithResultsTransformer[V](queries:Iterator[(Long,it\.agilelab\.bigdata\.spark\.search\.dsl\.DslQuery)],maxHits:Int,transformer:T=>V,maxHitsPerIndex:Int)* batchSearch(Iterator[(Long,DslQuery)],Int,T=>V,Int)]],
+	/** Like [[batchSearchWithResultsTransformer[V](queries:Iterator[(Long,it\.agilelab\.bigdata\.spark\.search\.dsl\.DslQuery)],maxHits:Int,resultsTransformer:T=>V,maxHitsPerIndex:Int)* batchSearch(Iterator[(Long,DslQuery)],Int,T=>V,Int)]],
 		* but uses [[RawQuery]] type queries instead of [[dsl.DslQuery]].
 		*
 		* @group Search
@@ -234,7 +234,7 @@ class PartitionsIndexLuceneRDD[T] private[search](
 	                                                     maxHitsPerIndex: Int = sameAsMaxHits)
 	: RDD[(Long, Array[(V, Double)])] = {
 		val maxHitsPerIndexActual = getMHPIActual(maxHitsPerIndex, maxHits)
-		val results = getIndexedPartitionsRDD.flatMap(_.batchSearchRaw(queries, maxHitsPerIndexActual, transformer))
+		val results = getIndexedPartitionsRDD.flatMap(_.batchSearchRaw(queries, maxHitsPerIndexActual, resultsTransformer))
 		aggregateResultsByKey(results, maxHits)
 	}
 	
@@ -285,7 +285,7 @@ class PartitionsIndexLuceneRDD[T] private[search](
 	}
 	
 	/** Like [[queryJoinWithResultsTransformer[U](other:org\.apache\.spark\.rdd\.RDD[U],queryGenerator:U=>it\.agilelab\.bigdata\.spark\.search\.dsl\.DslQuery,maxHits:Int)* queryJoin[U](RDD[U],U=>DslQuery,Int)]],
-		* but specifying a `transformer` function to be applied to the result elements.
+		* but specifying a `resultsTransformer` function to be applied to the result elements.
 		*
 		* @group QueryJoin
 		*/
@@ -298,7 +298,7 @@ class PartitionsIndexLuceneRDD[T] private[search](
 		
 		// do the search, process results
 		val results = queries.cartesian(this.getIndexedPartitionsRDD) map {
-			case (queryBatch, indexedPartition) => indexedPartition.batchSearch(queryBatch, maxHits, transformer)
+			case (queryBatch, indexedPartition) => indexedPartition.batchSearch(queryBatch, maxHits, resultsTransformer)
 		}
 		results.setName(f"Search results (cartesian) [${results.id}]")
 		
