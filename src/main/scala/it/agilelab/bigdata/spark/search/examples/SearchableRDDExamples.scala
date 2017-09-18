@@ -16,8 +16,12 @@ object SearchableRDDExamples {
 			.setMaster("local[8]")
 		val sc = new SparkContext(conf)
 		
-		// paths
-		val xmlPath = args(0) // input dump file path
+		// input dump file path
+		if (args.length < 1) {
+			println("Please specify the path to the Wikipedia XML dump.")
+			System.exit(1)
+		}
+		val xmlPath = args(0)
 		
 		// read xml dump into an rdd of wikipages
 		val wikipages = xmlDumpToRdd(sc, xmlPath).cache()
