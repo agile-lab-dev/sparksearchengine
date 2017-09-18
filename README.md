@@ -21,7 +21,9 @@ libraryDependencies += "it.agilelab" %% "spark-search" % "0.1"
 
 ## Documentation
 
-The scaladoc is available at [https://agile-lab-dev.github.io/sparksearchengine/].
+The scaladoc is available at:
+- [https://agile-lab-dev.github.io/sparksearchengine/scaladoc/0.1/scala_2.10] for Scala 2.10
+- [https://agile-lab-dev.github.io/sparksearchengine/scaladoc/0.1/scala_2.11] for Scala 2.11
 
 ## How it works
 
@@ -34,7 +36,7 @@ Queries can be specified either with the Lucene syntax or with `spark-search`'s 
 
 ## Example: indexing and searching a Wikipedia dump
 
-As a usage example, let's index and search a Wikipedia dump; let's start with the Simple English Wikipedia, as it is small enough to be readily downloadable and usale on less powerful hardware.
+As a usage example, let's index and search a Wikipedia dump; let's start with the Simple English Wikipedia, as it is small enough to be readily downloadable and usable on less powerful hardware.
 
 Head over to [https://dumps.wikimedia.org/simplewiki/] and grab the latest dump; choose the one marked as "Articles, templates, media/file descriptions, and primary meta-pages, in multiple bz2 streams, 100 pages per stream" - it should be named something like `simplewiki-20170820-pages-articles-multistream.xml.bz2`.
 
