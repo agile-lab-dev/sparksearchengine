@@ -11,5 +11,5 @@ package it.agilelab.bigdata.spark
 	* [[it.agilelab.bigdata.spark.search.impl.DistributedIndexLuceneRDD]].
 	*/
 package object search {
-	val SPARK_SEARCH_VERSION = "1.0"
+	val SPARK_SEARCH_VERSION = "0.1"
 }

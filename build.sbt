@@ -1,7 +1,10 @@
 import sbt.Keys._
 
-name := "SparkSearchEngine"
-version := "0.1-SNAPSHOT"
+name := "spark-search"
+version := "0.1"
+organization := "it.agilelab"
+organizationHomepage := Some(url("http://www.agilelab.it"))
+homepage := Some(url("http://www.agilelab.it"))
 licenses := Seq(("Apache-2.0", url("http://www.apache.org/licenses/LICENSE-2.0")))
 
 /* scala */
@@ -69,5 +72,5 @@ assemblyJarName in assembly := "sparksearchengine-all.jar"
 /* bintray publishing */
 bintrayOrganization := Some("agile-lab-dev") // organization
 bintrayRepository := "SparkSearchEngine" // target repo
-bintrayPackage := "spark-search" // target package
+bintrayPackage := "it.agilelab" // target package
 bintrayReleaseOnPublish := false // do not automatically release, instead do sbt publish, then sbt bintrayRelease
