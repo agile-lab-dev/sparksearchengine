@@ -36,8 +36,6 @@ addCompilerPlugin("org.scalamacros" % "paradise" % "2.1.0" cross CrossVersion.fu
 libraryDependencies += "com.esotericsoftware.kryo" % "kryo" % "2.24.0"
 // spark-xml
 libraryDependencies += "com.databricks" %% "spark-xml" % "0.3.2"
-// jsoup
-libraryDependencies += "org.jsoup" % "jsoup" % "1.10.1"
 // elasticsearch
 libraryDependencies += "org.elasticsearch" %% "elasticsearch-spark" % "5.0.0-alpha4" % "provided"
 
