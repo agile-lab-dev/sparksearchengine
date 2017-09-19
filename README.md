@@ -3,7 +3,13 @@
 # SearchableRDD for Apache Spark
 #### Big Data search with Spark and Lucene
 
-**spark-search** is a library for [Apache Spark](http://spark.apache.org/) that allows you to easily index and search your Spark datasets with similar functionality to that of a dedicated search engine like Elasticsearch or Solr.
+**spark-search** is an open source library for [Apache Spark](http://spark.apache.org/) that allows you to easily index and search your Spark datasets with similar functionality to that of a dedicated search engine like Elasticsearch or Solr.
+
+With spark-search you can leverage information retrieval functionality to analyze and explore you Spark datasets without having to setup an external search engine, lowering the effort needed. Without external systems there are no deployment, administration or resource costs associated with them; everything needed for information retrieval is handled inside your Spark application.
+ 
+Unstructured information like text is easy to leverage by using the standard query types for full-text search; filters for efficient interrogations are provided for non-textual data types. Queries and filters can be mixed together to express complex information retrieval needs.
+
+With a transparent integration with Spark's `RDD`s and a domain specific language for queries and filters the effort needed to leverage information retrieval from Spark is brought to a minimum.
 
 ## Setup
 
@@ -31,7 +37,7 @@ The scaladoc is available at:
 
 Powered by [Apache Lucene](http://lucene.apache.org/), `spark-search` enables you to run queries on `RDD`s by building Lucene indices for the elements in your input `RDD`s, creating `SearchableRDD`s which you can then execute queries on.
 
-The elements in the input `RDD` must implement the `Indexable` trait; in the Scala 2.11 build of `spark-search` there is an experimental automatic conversion functionality which allows you to transparently use you case classes without any work; `spark-search` will automatically add the functionality needed to implement the trait by using reflection and runtime code-generation. See the scaladoc for `it.agilelab.bigdata.spark.search.Indexable` and `it.agilelab.bigdata.spark.search.Indexable.ProductAsIndexable` for further information.
+The only requirement is that elements in the input `RDD` must implement the `Indexable` trait. There is an experimental automatic conversion feature which allows you to transparently use your case classes without any work, which currently only works in the Scala 2.11 build. When used, spark-search will automatically add the functionality needed to implement the trait by using reflection and runtime code-generation. See the scaladoc for `it.agilelab.bigdata.spark.search.Indexable` and `it.agilelab.bigdata.spark.search.Indexable.ProductAsIndexable` for further information.
 
 Queries can be specified either with the Lucene syntax or with `spark-search`'s own domain specific language; to explore the DSL, check out the scaladoc for the `it.agilelab.bigdata.spark.search.dsl.QueryBuilder` class.
 
@@ -40,7 +46,7 @@ Queries can be specified either with the Lucene syntax or with `spark-search`'s 
 
 As a usage example, let's index and search a Wikipedia dump; let's start with the Simple English Wikipedia, as it is small enough to be readily downloadable and usable on less powerful hardware.
 
-Head over to [https://dumps.wikimedia.org/simplewiki/] and grab the latest dump; choose the one marked as "Articles, templates, media/file descriptions, and primary meta-pages, in multiple bz2 streams, 100 pages per stream" - it should be named something like `simplewiki-20170820-pages-articles-multistream.xml.bz2`.
+Head over to [https://dumps.wikimedia.org/simplewiki/] and grab the latest dump; choose the one marked as "Articles, templates, media/file descriptions, and primary meta-pages, in multiple bz2 streams, 100 pages per stream" - it should be named something like `simplewiki-20170820-pages-articles-multistream.xml.bz2`. Download it and decompress it somewhere.
 
 First, we parse the XML dump into and `RDD[wikipage]`:
 
