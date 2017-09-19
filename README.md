@@ -78,6 +78,8 @@ import it.agilelab.bigdata.spark.search.impl.{DistributedIndexLuceneRDD, LuceneC
 
 // define a configuration to use english analyzers for wikipedia and the default query constructor
 val luceneConfig = LuceneConfig(classOf[EnglishWikipediaAnalyzer],
+                                classOf[EnglishWikipediaAnalyzer],
+                                classOf[DefaultQueryConstructor])
 
 // index using DistributedIndexLuceneRDD implementation with 2 indices
 val searchable: SearchableRDD[wikipage] = DistributedIndexLuceneRDD(wikipages, 2, luceneConfig).cache()
