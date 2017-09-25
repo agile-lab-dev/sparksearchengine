@@ -27,11 +27,48 @@ Add the dependency:
 libraryDependencies += "it.agilelab" %% "spark-search" % "0.1"
 ```
 
+#### Maven
+
+Add the repository:
+
+```xml
+<repositories>
+    <repository>
+        <id>spark-search</id>
+        <url>https://dl.bintray.com/agile-lab-dev/SparkSearchEngine/</url>
+    </repository>
+</repositories>
+```
+
+Add the dependency:
+
+```xml
+<dependencies>
+    <dependency>
+        <groupId>it.agilelab</groupId>
+        <artifactId>spark-search_2.11</artifactId>
+        <version>0.1</version>
+    </dependency>
+</dependencies>
+```
+
+Scala 2.10:
+
+```xml
+<dependencies>
+    <dependency>
+        <groupId>it.agilelab</groupId>
+        <artifactId>spark-search_2.10</artifactId>
+        <version>0.1</version>
+    </dependency>
+</dependencies>
+```
+
 ## Documentation
 
 The scaladoc is available at:
-- [https://agile-lab-dev.github.io/sparksearchengine/scaladoc/0.1/scala_2.10] for Scala 2.10
 - [https://agile-lab-dev.github.io/sparksearchengine/scaladoc/0.1/scala_2.11] for Scala 2.11
+- [https://agile-lab-dev.github.io/sparksearchengine/scaladoc/0.1/scala_2.10] for Scala 2.10
 
 ## How it works
 
